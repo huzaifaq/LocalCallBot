@@ -32,7 +32,11 @@ class MyDocument extends Document {
 	render() {
 		return (
 			<Html>
-				<Head>{registerServiceWorker()}</Head>
+				<Head>
+					<meta name="theme-color" content="#cccccc" />
+					<link rel="manifest" href="/manifest.json" />
+					{registerServiceWorker()}
+				</Head>
 				<body>
 					<Main />
 					<NextScript />
