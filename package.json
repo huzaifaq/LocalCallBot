@@ -1,0 +1,58 @@
+{
+	"name": "jz-jewels",
+	"version": "1.0.0",
+	"description": "Jerjis's Jewellery Store",
+	"main": "index.js",
+	"author": "Sadiqali Zaveri",
+	"license": "ISC",
+	"engines": {
+		"node": ">=10.16.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SadiqaliZaveri/JZ-Jewels.git"
+	},
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development TIER=dev nodemon server",
+		"lint": "eslint .",
+		"test": "cross-env NODE_ENV=test TIER=dev jest --coverage",
+		"build": "next build",
+		"start": "cross-env NODE_ENV=production PORT=80 node server",
+		"analyze": "cross-env ANALYZE=true next build",
+		"analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+		"analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
+	},
+	"dependencies": {
+		"@koa/cors": "^3.0.0",
+		"@next/bundle-analyzer": "^9.1.1",
+		"@zeit/next-css": "^1.0.1",
+		"isomorphic-unfetch": "^3.0.0",
+		"koa": "^2.10.0",
+		"koa-router": "^7.4.0",
+		"next": "^9.1.1",
+		"next-redux-wrapper": "^4.0.1",
+		"normalize.css": "^8.0.1",
+		"prop-types": "^15.7.2",
+		"react": "^16.10.2",
+		"react-dom": "^16.10.2",
+		"react-redux": "^7.1.1",
+		"redux": "^4.0.4",
+		"redux-thunk": "^2.3.0",
+		"styled-components": "^4.4.0"
+	},
+	"devDependencies": {
+		"babel-eslint": "^10.0.3",
+		"babel-plugin-styled-components": "^1.10.6",
+		"cross-env": "^6.0.3",
+		"eslint": "^6.5.1",
+		"eslint-config-airbnb": "^18.0.1",
+		"eslint-config-prettier": "^6.4.0",
+		"eslint-plugin-import": "^2.18.2",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-prettier": "^3.1.1",
+		"eslint-plugin-react": "^7.16.0",
+		"eslint-plugin-react-hooks": "^1.7.0",
+		"nodemon": "^1.19.3",
+		"prettier": "1.18.2"
+	}
+}
