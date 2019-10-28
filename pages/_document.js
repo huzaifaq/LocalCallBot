@@ -31,8 +31,8 @@ class MyDocument extends Document {
 
 	render() {
 		return (
-			<Html>
-				<Head lang="en">
+			<Html lang="en">
+				<Head>
 					<meta name="theme-color" content="#cccccc" />
 					<meta
 						name="Description"
