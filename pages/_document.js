@@ -32,9 +32,17 @@ class MyDocument extends Document {
 	render() {
 		return (
 			<Html>
-				<Head>
+				<Head lang="en">
 					<meta name="theme-color" content="#cccccc" />
+					<meta
+						name="Description"
+						content="Jerjis's Jewellery Store"
+					/>
 					<link rel="manifest" href="/manifest.json" />
+					<link
+						rel="apple-touch-icon"
+						href="/images/icons/jz-jewels-initials-192.png"
+					/>
 					{registerServiceWorker()}
 				</Head>
 				<body>
