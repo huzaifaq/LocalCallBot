@@ -7,5 +7,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer(
 	withCSS({
 		poweredByHeader: false,
+		compress: process.env.PROTOCOL !== 'HTTP2', // Has to be disabled when using HTTP2
 	})
 )

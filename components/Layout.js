@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const WithLayoutWrapper = styled.div`
 	padding: 50px;
-	min-height: 2000px;
+	min-height: 900px;
 `
 
 const withLayout = Page => {

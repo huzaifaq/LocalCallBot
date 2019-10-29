@@ -23,7 +23,6 @@ const Index = props => {
 }
 
 Index.getInitialProps = async () => {
-	console.log('Yolo')
 	const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
 	const data = await res.json()
 
