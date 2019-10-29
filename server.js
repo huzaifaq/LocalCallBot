@@ -48,7 +48,7 @@ app.prepare().then(() => {
 
 		// Compression has to be turned off in next.config.js
 		// Do not forget to browse with https://localhost:3000
-		http2.createSecureServer(cert, server.callback()).listen(443, err => {
+		http2.createSecureServer(cert, server.callback()).listen(port, err => {
 			if (err) throw err
 			console.log(
 				'\x1b[42m\x1b[37m%s\x1b[0m',
