@@ -38,6 +38,10 @@ class MyDocument extends Document {
 						name="Description"
 						content="Jerjis's Jewellery Store"
 					/>
+					<meta
+						name="viewport"
+						content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui"
+					/>
 					<link rel="manifest" href="/manifest.json" />
 					<link
 						rel="apple-touch-icon"
@@ -46,6 +50,12 @@ class MyDocument extends Document {
 					{registerServiceWorker()}
 				</Head>
 				<body>
+					<noscript>
+						<h2>
+							Javascript is disabled. Please enable javascript and
+							reload the page.
+						</h2>
+					</noscript>
 					<Main />
 					<NextScript />
 				</body>

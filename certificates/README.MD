@@ -7,6 +7,7 @@
 ## Executions
 
 Run the following command the generate a certificate and the private key
+
 Ensure that the `ssl.conf` is in the same folder where `openssl` command is being used
 
 ```Node
