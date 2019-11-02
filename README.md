@@ -43,6 +43,17 @@ npm run lint
 
 It will output the errors / warnings / info in the console if they exist.
 
+### MongoDB
+
+Install [MongoDB](https://www.mongodb.com/)
+
+You may use any tool to view the documents.
+Ideal tool [MongoDB Compass](https://www.mongodb.com/products/compass)
+
+Ensure you have mongoDB service running for local connections
+
+Upon running the server info / error / warning logs will be visible.
+
 ## IDE - Highly Recommended
 
 1. [Visual Studio Code](https://code.visualstudio.com/)
