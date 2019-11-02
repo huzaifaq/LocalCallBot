@@ -13,6 +13,7 @@ const env = process.env.NODE_ENV
 const dev = tier === 'dev'
 const app = zeitNext({ dir: '.', dev })
 const handle = app.getRequestHandler()
+const { initializeDBConnection } = require('./backend/mongoConnection')
 
 const applicationServerLog = () => {
 	console.log(
@@ -24,6 +25,8 @@ const applicationServerLog = () => {
 	console.log('\x1b[42m\x1b[37m%s\x1b[0m', ' PROTOCOL: ', protocol)
 	console.log('\x1b[42m\x1b[37m%s\x1b[0m', ' PORT: ', port)
 }
+
+initializeDBConnection()
 
 app.prepare().then(() => {
 	const server = new Koa()
