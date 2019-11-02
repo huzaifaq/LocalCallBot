@@ -1,4 +1,11 @@
 import styled from 'styled-components'
+import Head from 'next/head'
+
+import Header from './Header'
+import Footer from './Footer'
+
+import 'normalize.css'
+import '../public/css/common.css'
 
 const WithLayoutWrapper = styled.div`
 	padding: 50px;
@@ -8,9 +15,16 @@ const WithLayoutWrapper = styled.div`
 const withLayout = Page => {
 	const pageHoisted = props => {
 		return (
-			<WithLayoutWrapper>
-				<Page {...props} />
-			</WithLayoutWrapper>
+			<React.Fragment>
+				<Head>
+					<title key="title">Jerjis's Jewellery Store</title>
+				</Head>
+				<Header />
+				<WithLayoutWrapper>
+					<Page {...props} />
+				</WithLayoutWrapper>
+				<Footer />
+			</React.Fragment>
 		)
 	}
 
