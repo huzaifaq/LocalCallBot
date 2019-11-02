@@ -11,6 +11,20 @@ if (workbox) {
 }
 
 workbox.routing.registerRoute(
+	'/',
+	new workbox.strategies.StaleWhileRevalidate({
+		// Use a custom cache name.
+		cacheName: 'page-cache',
+		plugins: [
+			new workbox.expiration.Plugin({
+				// Cache for a maximum of a day.
+				maxAgeSeconds: 1 * 24 * 60 * 60,
+			}),
+		],
+	})
+)
+
+workbox.routing.registerRoute(
 	/\.js$/,
 	new workbox.strategies.StaleWhileRevalidate({
 		// Use a custom cache name.
