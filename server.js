@@ -13,7 +13,7 @@ const env = process.env.NODE_ENV
 const dev = tier === 'dev'
 const app = zeitNext({ dir: '.', dev })
 const handle = app.getRequestHandler()
-const { initializeDBConnection } = require('./backend/mongoConnection')
+require('./backend/mongoConnection')
 
 const applicationServerLog = () => {
 	console.log(
