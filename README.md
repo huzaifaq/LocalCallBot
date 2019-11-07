@@ -1,6 +1,8 @@
-# JZ-Jewels
+# Crafted Jewellers
 
 Jerjis's Jewellery Store
+
+Hosted on craftedjewellers.in
 
 ## Usage
 
