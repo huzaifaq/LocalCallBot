@@ -13,6 +13,8 @@ const env = process.env.NODE_ENV
 const dev = tier === 'dev'
 const app = zeitNext({ dir: '.', dev })
 const handle = app.getRequestHandler()
+const API = require('./routes/api')
+
 require('./backend/mongoConnection')
 
 const applicationServerLog = () => {
@@ -26,12 +28,11 @@ const applicationServerLog = () => {
 	console.log('\x1b[42m\x1b[37m%s\x1b[0m', ' PORT: ', port)
 }
 
-initializeDBConnection()
-
 app.prepare().then(() => {
 	const server = new Koa()
 	const router = new Router()
 
+	// Disable koa route handling as app will handle them
 	router.get('*', async ctx => {
 		await handle(ctx.req, ctx.res)
 		ctx.respond = false
@@ -50,6 +51,7 @@ app.prepare().then(() => {
 		await next()
 	})
 
+	server.use(API.routes())
 	/* Main router middleware - should be used after other routes */
 	server.use(router.routes())
 
