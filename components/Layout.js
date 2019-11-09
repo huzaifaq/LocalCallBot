@@ -4,15 +4,22 @@ import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
 
+const PageWrapper = styled.div`
+	background-color: ${props => props.theme.lightGray};
+`
+
 const WithLayoutWrapper = styled.div`
 	padding: 50px;
 	min-height: 900px;
+	background-color: ${props => props.theme.lightGray};
+	margin: 0 auto;
+	max-width: ${props => props.theme.wrapperMaxWidth};
 `
 
 const withLayout = Page => {
 	const pageHoisted = props => {
 		return (
-			<React.Fragment>
+			<PageWrapper>
 				<Head>
 					<title key="title">Jerjis's Jewellery Store</title>
 				</Head>
@@ -21,7 +28,7 @@ const withLayout = Page => {
 					<Page {...props} />
 				</WithLayoutWrapper>
 				<Footer />
-			</React.Fragment>
+			</PageWrapper>
 		)
 	}
 
