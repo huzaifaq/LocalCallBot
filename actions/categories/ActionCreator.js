@@ -10,8 +10,12 @@ export const fetchCategories = () => async dispatch => {
 	try {
 		dispatch(requestCategories())
 		const res = await fetch(`${getBaseUrl()}api/categories`)
-		const data = await res.json()
-		dispatch(receiveCategories(data))
+		if (res.status === 200) {
+			const data = await res.json()
+			dispatch(receiveCategories(data))
+			return
+		}
+		throw res
 	} catch (error) {
 		console.log('Error: Failed to fetch categories')
 		console.error(error)
