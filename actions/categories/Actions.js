@@ -12,11 +12,11 @@ export const requestCategories = () => ({
 	},
 })
 
-export const receiveCategories = categories => ({
+export const receiveCategories = data => ({
 	type: RECEIVE_CATEGORIES,
 	payload: {
 		isFetching: false,
-		categories,
+		data,
 	},
 })
 export const failedCategories = () => ({

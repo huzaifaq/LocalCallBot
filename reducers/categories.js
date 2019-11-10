@@ -5,7 +5,7 @@ import {
 } from '../actions/categories/ActionTypes'
 
 const initialState = {
-	categories: [],
+	data: [],
 	isFetching: false,
 	isError: false,
 }
