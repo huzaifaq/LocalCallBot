@@ -1,18 +1,21 @@
 const Categories = require('../../backend/models/Categories')
+const Products = require('../../backend/models/Products')
 
-const getDBModel = async queryIdentifier => {
-	switch (queryIdentifier) {
-		case 'categories-all':
-			return Categories.find()
-		default:
-			return null
-	}
+const dbMapObject = {
+	categories: {
+		model: Categories,
+	},
+	products: {
+		model: Products,
+	},
 }
 
 module.exports = {
-	performDBCall: async (ctx, queryIdentifier) => {
+	performDBCall: async (ctx, collection) => {
 		try {
-			const data = await getDBModel(queryIdentifier)
+			const { model } = dbMapObject[collection]
+			const data = await model.find(ctx.query)
+
 			ctx.status = 200
 			ctx.body = data
 		} catch (error) {
