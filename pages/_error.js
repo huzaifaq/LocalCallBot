@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import withLayout from '../components/Layout'
 
 /**
  *
@@ -20,7 +21,7 @@ const Error = ({ statusCode }) => {
 	return (
 		<p>
 			{statusCode
-				? `An error ${statusCode} occurred on server`
+				? `An ${statusCode} error occurred on server`
 				: 'An error occurred on client'}
 		</p>
 	)
@@ -36,4 +37,4 @@ Error.propTypes = {
 		.isRequired,
 }
 
-export default Error
+export default withLayout(Error)

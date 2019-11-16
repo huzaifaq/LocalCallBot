@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
-import images from './images'
+import categories from './categories'
+import products from './products'
 
 const rootReducer = combineReducers({
-	images,
+	categories,
+	products,
 })
 
 export default rootReducer

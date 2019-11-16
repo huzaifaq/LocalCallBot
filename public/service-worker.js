@@ -25,6 +25,19 @@ workbox.routing.registerRoute(
 )
 
 workbox.routing.registerRoute(
+	/\/api\//,
+	new workbox.strategies.StaleWhileRevalidate({
+		cacheName: 'api-cache',
+		plugins: [
+			new workbox.expiration.Plugin({
+				// Cache for a maximum of a day.
+				maxAgeSeconds: 1 * 24 * 60 * 60,
+			}),
+		],
+	})
+)
+
+workbox.routing.registerRoute(
 	/\.js$/,
 	new workbox.strategies.StaleWhileRevalidate({
 		// Use a custom cache name.

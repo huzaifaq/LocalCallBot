@@ -10,17 +10,17 @@ import theme from '../themes'
 import 'normalize.css'
 import '../public/css/common.css'
 
-class JZJewels extends App {
+class CraftedJewellers extends App {
 	// Only uncomment this method if you have blocking data requirements for
 	// every single page in your application. This disables the ability to
 	// perform automatic static optimization, causing every page in your app to
 	// be server-side rendered.
-	static async getInitialProps(appContext) {
-		// calls page's `getInitialProps` and fills `appProps.pageProps`
-		const appProps = await App.getInitialProps(appContext)
+	// static async getInitialProps(appContext) {
+	// 	// calls page's `getInitialProps` and fills `appProps.pageProps`
+	// 	const appProps = await App.getInitialProps(appContext)
 
-		return { ...appProps }
-	}
+	// 	return { ...appProps }
+	// }
 
 	render() {
 		const { Component, pageProps, store } = this.props
@@ -34,4 +34,4 @@ class JZJewels extends App {
 	}
 }
 
-export default withRedux(configureStore)(JZJewels)
+export default withRedux(configureStore)(CraftedJewellers)

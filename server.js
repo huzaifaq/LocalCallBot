@@ -47,7 +47,6 @@ app.prepare().then(() => {
 
 	server.use(async (ctx, next) => {
 		ctx.res.statusCode = 200
-		ctx.set('X-Frame-Options', 'SAMEORIGIN')
 		await next()
 	})
 

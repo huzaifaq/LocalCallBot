@@ -5,6 +5,8 @@ const router = new Router({
 	prefix: '/api',
 })
 
-router.get('/categories', async ctx => performDBCall(ctx, 'categories-all'))
+router.get('/categories', async ctx => performDBCall(ctx, 'categories'))
+
+router.get('/products', async ctx => performDBCall(ctx, 'products'))
 
 module.exports = router

@@ -1,6 +1,19 @@
 const theme = {
 	white: '#FFFFFF',
-	grey: '#CCCCCC',
+	gray: '#CCCCCC',
+	lightGray: '#f2f2f2',
 }
 
-export default theme
+const dimensions = {
+	wrapperMaxWidth: '1366px',
+}
+
+const zIndexes = {
+	headerZ: 99,
+}
+
+export default {
+	...theme,
+	...dimensions,
+	...zIndexes,
+}
