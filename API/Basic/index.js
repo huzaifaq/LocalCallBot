@@ -1,12 +1,14 @@
+import env from '../../env'
+
 module.exports = {
 	getBaseUrl: () => {
-		switch (process.env.TIER) {
-			case 'dev':
-				return 'http://localhost:3000/'
+		const protocol = env.PROTOCOL === 'HTTP2' ? 'https://' : 'http://'
+		switch (env.TIER) {
 			case 'production':
 				return 'https://craftedjewellers.in/'
+			case 'dev':
 			default:
-				return 'http://localhost:3000/'
+				return `${protocol}localhost:3000/`
 		}
 	},
 }
