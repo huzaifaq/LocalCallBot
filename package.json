@@ -13,12 +13,12 @@
 		"url": "https://github.com/SadiqaliZaveri/JZ-Jewels.git"
 	},
 	"scripts": {
-		"dev": "cross-env NODE_ENV=development nodemon server",
-		"dev:h2": "cross-env NODE_ENV=development PROTOCOL=HTTP2 nodemon server",
+		"dev": "cross-env NODE_ENV=development TIER=dev nodemon server",
+		"dev:h2": "cross-env NODE_ENV=development TIER=dev PROTOCOL=HTTP2 nodemon server",
 		"lint": "eslint .",
 		"build": "next build",
 		"start": "cross-env TIER=production NODE_ENV=production PORT=3000 node server",
-		"start:h2": "cross-env NODE_ENV=production PROTOCOL=HTTP2 PORT=443 node server",
+		"start:h2": "cross-env TIER=production NODE_ENV=production PROTOCOL=HTTP2 PORT=443 node server",
 		"analyze": "cross-env ANALYZE=true next build",
 		"analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
 		"analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
@@ -38,6 +38,7 @@
 		"react": "^16.10.2",
 		"react-dom": "^16.10.2",
 		"react-redux": "^7.1.1",
+		"react-transition-group": "^4.3.0",
 		"redux": "^4.0.4",
 		"redux-thunk": "^2.3.0",
 		"styled-components": "^4.4.0"
