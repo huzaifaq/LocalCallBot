@@ -8,6 +8,7 @@ const initialState = {
 	data: [],
 	isFetching: false,
 	isError: false,
+	isSuccess: false,
 }
 
 export const getNewState = (currentState, payload) => ({

@@ -39,7 +39,9 @@ const MenuItem = styled.div`
 	padding: 10px 20px;
 	cursor: pointer;
 	&:hover {
-		transform: scale(1.1);
+		@media ${props => props.theme.desktopL} {
+			transform: scale(1.1);
+		}
 	}
 `
 
@@ -50,15 +52,15 @@ const Header = () => {
 		<HeaderWrapper>
 			<HeaderContainer>
 				<LogoWrapper>
-					<Link href='/'>
+					<Link href="/" prefetch={false}>
 						<Logo
-							src='/images/icons/jz-jewels-logo.png'
-							alt='Logo'
+							src="/images/icons/jz-jewels-logo.png"
+							alt="Logo"
 						/>
 					</Link>
 				</LogoWrapper>
 				<MenuWrapper>
-					<Link href='/'>
+					<Link href="/" prefetch={false}>
 						<MenuItem>Home</MenuItem>
 					</Link>
 					<MenuItem onClick={() => setActiveMenu(!activeMenu)}>
@@ -67,13 +69,12 @@ const Header = () => {
 				</MenuWrapper>
 				<CSSTransition
 					in={activeMenu}
-					classNames='fade'
+					classNames="fade"
 					timeout={300}
 					unmountOnExit
 					mountOnEnter
-					closeSidebar={setActiveMenu}
 				>
-					<Sidebar />
+					<Sidebar closeSidebar={setActiveMenu} />
 				</CSSTransition>
 			</HeaderContainer>
 		</HeaderWrapper>

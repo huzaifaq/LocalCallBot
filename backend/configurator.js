@@ -10,7 +10,7 @@ const fileLoc =
  * @description Fetch the db config details and init the variables
  * @var connectionUrl
  * @var dbName
- * @var galleryCollectionName
+ * @var productsCollectionName
  * @var categoriesCollectName
  * @var user
  * @var userPassword

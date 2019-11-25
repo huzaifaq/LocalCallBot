@@ -18,4 +18,23 @@ export const registerServiceWorker = () => {
 	)
 }
 
+export const capitalizeSentence = value => {
+	return value.replace(/(?:^|\s)\S/g, a => a.toUpperCase())
+}
+
+export const readIdentifierFromURL = value => {
+	if (!value) return null
+	return capitalizeSentence(value)
+		.split('-')
+		.join(' ')
+}
+
+export const convertToURLIdentifier = value => {
+	if (!value) return null
+	return value
+		.toLowerCase()
+		.split(' ')
+		.join('-')
+}
+
 export default undefined
