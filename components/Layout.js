@@ -6,14 +6,14 @@ import Footer from './Footer'
 
 const PageWrapper = styled.div`
 	background-color: ${props => props.theme.lightGray};
+	height: auto;
 `
 
 const WithLayoutWrapper = styled.div`
-	padding: 50px;
-	min-height: 900px;
 	background-color: ${props => props.theme.lightGray};
 	margin: 0 auto;
 	max-width: ${props => props.theme.wrapperMaxWidth};
+	min-height: 900px;
 `
 
 const withLayout = Page => {
