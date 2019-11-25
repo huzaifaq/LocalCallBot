@@ -1,8 +1,15 @@
 import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import styled, { keyframes } from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
+import {
+	genericErrorMsg,
+	genericNoData,
+	sidebarTimeout,
+} from '../helpers/constants'
+import { convertToURLIdentifier, readIdentifierFromURL } from '../helpers/utils'
 
 import { fetchCategories } from '../actions/categories/ActionCreator'
 
@@ -13,8 +20,8 @@ const SidebarWrapper = styled.div`
 	max-width: 250px;
 	right: 0;
 	top: 84px;
-	transition: opacity 0.2s ease-in;
-	box-shadow: 0px 0px 8px 0px ${props => props.theme.gray};
+	transition: all 0.2s ease-in;
+	box-shadow: 0px 0px 2px 0px ${props => props.theme.gold};
 	min-height: 300px;
 	display: flex;
 	justify-content: center;
@@ -23,18 +30,30 @@ const SidebarWrapper = styled.div`
 	user-select: none;
 
 	&.fade-enter {
+		@media ${props => props.theme.laptop} {
+			right: -250px;
+		}
 		opacity: 0;
 	}
 
 	&.fade-enter-active {
+		@media ${props => props.theme.laptop} {
+			right: 0;
+		}
 		opacity: 1;
 	}
 
 	&.fade-exit {
+		@media ${props => props.theme.laptop} {
+			right: 0;
+		}
 		opacity: 1;
 	}
 
 	&.fade-exit-active {
+		@media ${props => props.theme.laptop} {
+			right: -250px;
+		}
 		opacity: 0;
 	}
 `
@@ -45,11 +64,14 @@ const SidebarContainer = styled.div`
 const SidebarItem = styled.div`
 	transition: font-size 0.1s ease-out;
 	height: 60px;
-	border-top: 1px solid ${props => props.theme.lightGray};
+	border-top: 1px solid ${props => props.theme.gold};
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
+	color: ${props =>
+		props.active ? props.theme.activeText : props.theme.textBlack};
+	font-size: ${props => (props.active ? '18px' : '16px')};
 
 	&:hover {
 		font-size: 18px;
@@ -87,53 +109,62 @@ const SidebarLoading = styled.div`
 	animation: ${placeHolderShimmer} 1s linear infinite forwards;
 `
 
+let closeSidebarTimeout = null
+
 const Sidebar = ({ closeSidebar }) => {
 	const { data, isError, isFetching } = useSelector(state => state.categories)
 	const dispatch = useDispatch()
-	let closeSidebarTimeout = null
-
+	const router = useRouter()
 	const handleClearTimeout = () => {
 		clearTimeout(closeSidebarTimeout)
 	}
 
-	useEffect(() => {
-		if (!data.length) dispatch(fetchCategories())
-	}, [])
-
 	const handleCloseSidebar = () => {
-		closeSidebarTimeout = setTimeout(() => closeSidebar(false), 1000)
+		closeSidebarTimeout = setTimeout(
+			() => closeSidebar(false),
+			sidebarTimeout
+		)
 	}
+
+	useEffect(() => {
+		handleClearTimeout()
+		handleCloseSidebar()
+		if (!data.length) dispatch(fetchCategories())
+		return () => handleClearTimeout()
+	}, [])
 
 	let currentView = null
 
 	if (isError) {
-		currentView = 'Something went wrong :('
-	}
-
-	if (isFetching) {
+		currentView = genericErrorMsg
+	} else if (isFetching) {
 		currentView = (
-			<SidebarWrapper>
-				<SidebarContainer>
-					<SidebarLoading />
-					<SidebarLoading />
-					<SidebarLoading />
-					<SidebarLoading />
-					<SidebarLoading />
-				</SidebarContainer>
-			</SidebarWrapper>
+			<React.Fragment>
+				<SidebarLoading />
+				<SidebarLoading />
+				<SidebarLoading />
+				<SidebarLoading />
+				<SidebarLoading />
+			</React.Fragment>
 		)
-	}
-
-	if (data && !data.length) {
-		currentView = 'No Categories Available'
+	} else if (data && !data.length) {
+		currentView = genericNoData
 	} else {
 		currentView = data.map(category => (
 			<Link
-				href='/products/[category]'
-				as={`/products/${category.name}`}
+				href="/products/[category]"
+				as={`/products/${convertToURLIdentifier(category.name)}`}
 				key={category.name}
 			>
-				<SidebarItem>{category.name}</SidebarItem>
+				<SidebarItem
+					active={
+						readIdentifierFromURL(router.query.category) ===
+						category.name
+					}
+					onClick={() => closeSidebar(false)}
+				>
+					{category.name}
+				</SidebarItem>
 			</Link>
 		))
 	}
