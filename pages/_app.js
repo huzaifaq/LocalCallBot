@@ -9,6 +9,7 @@ import theme from '../themes'
 
 import 'normalize.css'
 import '../public/css/common.css'
+import 'lazysizes'
 
 class CraftedJewellers extends App {
 	// Only uncomment this method if you have blocking data requirements for
