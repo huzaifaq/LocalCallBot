@@ -9,6 +9,7 @@ export const requestProducts = () => ({
 	payload: {
 		isError: false,
 		isFetching: true,
+		isSuccess: false,
 	},
 })
 
@@ -17,6 +18,7 @@ export const receiveProducts = data => ({
 	payload: {
 		isFetching: false,
 		data,
+		isSuccess: true,
 	},
 })
 export const failedProducts = () => ({
@@ -24,5 +26,6 @@ export const failedProducts = () => ({
 	payload: {
 		isError: true,
 		isFetching: false,
+		isSuccess: false,
 	},
 })

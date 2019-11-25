@@ -6,11 +6,19 @@ import styled, { keyframes } from 'styled-components'
 import withLayout from '../../../components/Layout'
 import { fetchProducts } from '../../../actions/products/ActionCreator'
 import ItemCard from '../../../components/ItemCard'
+import { genericNoData, genericErrorMsg } from '../../../helpers/constants'
+import { readIdentifierFromURL } from '../../../helpers/utils'
 
 const ItemCardWrapper = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+`
+
+const ErrorContainer = styled.div`
+	height: 440px;
+	align-items: center;
+	display: flex;
 `
 
 const placeHolderShimmer = keyframes`
@@ -43,19 +51,25 @@ const LoadingCardTemplate = styled.div`
 `
 
 const Index = () => {
-	const { data, isError, isFetching } = useSelector(state => state.products)
+	const { data, isError, isFetching, isSuccess } = useSelector(
+		state => state.products
+	)
 	const dispatch = useDispatch()
 	const router = useRouter()
 
 	useEffect(() => {
-		dispatch(fetchProducts(router.query.category))
+		dispatch(fetchProducts(readIdentifierFromURL(router.query.category)))
 	}, [router.query.category])
 
 	if (isError) {
-		return <div>WOAHHHHH</div>
+		return (
+			<ItemCardWrapper>
+				<ErrorContainer>{genericErrorMsg}</ErrorContainer>
+			</ItemCardWrapper>
+		)
 	}
 
-	if (isFetching) {
+	if (isFetching || !isSuccess) {
 		return (
 			<ItemCardWrapper>
 				<LoadingCardTemplate />
@@ -68,8 +82,12 @@ const Index = () => {
 		)
 	}
 
-	if (data && !data.length) {
-		return <div>No IteMS</div>
+	if (data && !data.length && isSuccess) {
+		return (
+			<ItemCardWrapper>
+				<ErrorContainer>{genericNoData}</ErrorContainer>
+			</ItemCardWrapper>
+		)
 	}
 
 	return data.length ? (
