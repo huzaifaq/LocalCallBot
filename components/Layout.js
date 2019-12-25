@@ -21,7 +21,7 @@ const withLayout = Page => {
 		return (
 			<PageWrapper>
 				<Head>
-					<title key="title">Jerjis's Jewellery Store</title>
+					<title key="title">Sadiqali's Jewellery Services</title>
 				</Head>
 				<Header />
 				<WithLayoutWrapper>
