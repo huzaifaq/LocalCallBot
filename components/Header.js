@@ -20,15 +20,17 @@ const HeaderWrapper = styled.div`
 const HeaderContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	width: 100%;
 	max-width: ${props => props.theme.wrapperMaxWidth};
 `
 const LogoWrapper = styled.div`
 	display: flex;
+	height: 20px;
 `
 const Logo = styled.img`
-	width: 140px;
 	cursor: pointer;
+	height: 100%;
 `
 const MenuWrapper = styled.div`
 	display: flex;
@@ -54,7 +56,7 @@ const Header = () => {
 				<LogoWrapper>
 					<Link href="/" prefetch={false}>
 						<Logo
-							src="/images/icons/jz-jewels-logo.png"
+							src="/images/icons/crafted-jewellers-logo-594x60.png"
 							alt="Logo"
 						/>
 					</Link>

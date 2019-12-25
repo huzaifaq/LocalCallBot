@@ -37,21 +37,21 @@ class MyDocument extends Document {
 
 	render() {
 		return (
-			<Html lang='en'>
+			<Html lang="en">
 				<Head>
-					<meta name='theme-color' content='#cccccc' />
+					<meta name="theme-color" content="#cccccc" />
 					<meta
-						name='Description'
-						content="Jerjis's Jewellery Store"
+						name="Description"
+						content="Sadiqali's Jewellery Services"
 					/>
 					<meta
-						name='viewport'
-						content='width=device-width, initial-scale=1, minimum-scale=1, minimal-ui'
+						name="viewport"
+						content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui"
 					/>
-					<link rel='manifest' href='/manifest.json' />
+					<link rel="manifest" href="/manifest.json" />
 					<link
-						rel='apple-touch-icon'
-						href='/images/icons/jz-jewels-initials-192.png'
+						rel="apple-touch-icon"
+						href="/images/icons/crafted-jewellers-192.png"
 					/>
 					{registerServiceWorker()}
 				</Head>

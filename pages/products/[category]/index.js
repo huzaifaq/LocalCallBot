@@ -13,6 +13,7 @@ const ItemCardWrapper = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin-bottom: 40px;
 `
 
 const ErrorContainer = styled.div`
@@ -34,7 +35,7 @@ const placeHolderShimmer = keyframes`
 const LoadingCardTemplate = styled.div`
 	width: 350px;
 	height: 450px;
-	margin: 8px;
+	margin: 40px 12px 0;
 	background: #f6f7f8;
 	background-image: linear-gradient(
 		to right,
