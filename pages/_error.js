@@ -1,6 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import withLayout from '../components/Layout'
+
+const ErrorWrapper = styled.p`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 200px;
+`
 
 /**
  *
@@ -19,11 +27,11 @@ const checkContextforError = ctx => {
 
 const Error = ({ statusCode }) => {
 	return (
-		<p>
+		<ErrorWrapper>
 			{statusCode
 				? `An ${statusCode} error occurred on server`
 				: 'An error occurred on client'}
-		</p>
+		</ErrorWrapper>
 	)
 }
 
