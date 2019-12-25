@@ -7,7 +7,7 @@ import { convertToURLIdentifier } from '../helpers/utils'
 const fadeIn = keyframes`
 	from {
 		opacity: 0;
-		margin-top: 50px;
+		margin-top: 80px;
   	}
 
 	to {
@@ -18,7 +18,7 @@ const fadeIn = keyframes`
 const CardWrapper = styled.div`
 	width: 350px;
 	height: 450px;
-	margin: 40px 12px;
+	margin: 40px 12px 0;
 	cursor: pointer;
 	border-radius: 8px;
 	box-shadow: 0 0px 8px 0px ${props => props.theme.gray};
