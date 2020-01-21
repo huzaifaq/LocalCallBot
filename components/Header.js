@@ -48,7 +48,7 @@ const MenuItem = styled.div`
 	padding: 10px 20px;
 	cursor: pointer;
 	&:hover {
-		@media ${props => props.theme.desktopL} {
+		@media ${props => props.theme.laptop} {
 			transform: scale(1.1);
 		}
 	}
