@@ -22,6 +22,7 @@ body {
 	font-family: Roboto-Regular, sans-serif;
 	letter-spacing: 1px;
 	background-color: #f2f2f2;
+	line-height: 24px;
 }
 
 /* Prevents broken image to be shown */

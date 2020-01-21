@@ -35,3 +35,16 @@
 
 -   Service worker implementation
 -   MongoDB / Mongoose basic configurations added
+
+# 1.0.2
+
+-   Move to cloudfront alternate dns for video
+-   Add contact information in footer
+-   Make logo in header responsive
+-   Add more service information on home page
+-   Add termsn and conditions page
+-   Change sidebar timer from 2 seconds to 5 seconds
+-   Remove unwanted files
+-   Add line height in body
+-   Change title
+-   Modify media queries

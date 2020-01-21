@@ -1,6 +1,6 @@
 {
 	"name": "crafted-jewellers",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Jerjis's Jewellery Store",
 	"main": "index.js",
 	"author": "Sadiqali Zaveri",
@@ -18,7 +18,7 @@
 		"lint": "eslint .",
 		"build": "next build",
 		"start": "cross-env TIER=production NODE_ENV=production PORT=3000 node server",
-		"start:h2": "cross-env TIER=production NODE_ENV=production PROTOCOL=HTTP2 PORT=443 node server",
+		"start:h2": "cross-env TIER=production NODE_ENV=production PROTOCOL=HTTP2 PORT=3000 node server",
 		"analyze": "cross-env ANALYZE=true next build",
 		"analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
 		"analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
