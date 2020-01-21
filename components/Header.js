@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { CSSTransition } from 'react-transition-group'
 import Sidebar from './Sidebar'
+import theme from '../themes'
 
 const HeaderWrapper = styled.div`
 	position: sticky;
@@ -27,11 +28,17 @@ const HeaderContainer = styled.div`
 const LogoWrapper = styled.div`
 	display: flex;
 	height: 20px;
+	@media ${props => props.theme.mobileL} {
+		height: 60px;
+	}
 `
-const Logo = styled.img`
+const LogoPicture = styled.picture``
+
+const LogoImg = styled.img`
 	cursor: pointer;
 	height: 100%;
 `
+
 const MenuWrapper = styled.div`
 	display: flex;
 	align-items: center;
@@ -55,10 +62,16 @@ const Header = () => {
 			<HeaderContainer>
 				<LogoWrapper>
 					<Link href="/" prefetch={false}>
-						<Logo
-							src="/images/icons/crafted-jewellers-logo-594x60.png"
-							alt="Logo"
-						/>
+						<LogoPicture>
+							<source
+								media={theme.mobileL}
+								srcSet="/images/icons/crafted-jewellers-192.png"
+							/>
+							<LogoImg
+								src="/images/icons/crafted-jewellers-logo-594x60.png"
+								alt="Logo"
+							/>
+						</LogoPicture>
 					</Link>
 				</LogoWrapper>
 				<MenuWrapper>
