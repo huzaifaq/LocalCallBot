@@ -42,6 +42,7 @@ const CardPictureWrapper = styled.div`
 	height: 350px;
 `
 const CardPicture = styled.picture``
+const CardImg = styled.img``
 const CardInfoWrapper = styled.div`
 	width: 100;
 	height: 100%;
@@ -60,28 +61,20 @@ const ItemCard = props => {
 	const { category, itemId, imgPath, description, heading } = props
 	return (
 		<Link
-			href="/[category]/[item]"
-			as={`/${convertToURLIdentifier(category)}/${convertToURLIdentifier(
-				itemId
-			)}`}
+			href="/products/[category]/[item]"
+			as={`/products/${convertToURLIdentifier(
+				category
+			)}/${convertToURLIdentifier(itemId)}`}
 		>
 			<CardWrapper>
 				<CardContainer>
 					<CardPictureWrapper>
 						<CardPicture>
 							<source
-								media={theme.mobileS}
-								data-srcset="https://via.placeholder.com/300x350/000000.png?text=Dummy+Jewellery+Image"
-							/>
-							<source
 								media={theme.mobileL}
-								data-srcset="https://via.placeholder.com/320x350/000000.png?text=Dummy+Jewellery+Image"
+								data-srcset="https://via.placeholder.com/320x350/000000.png?text=Dummy+Jewellery+Image+Mobile"
 							/>
-							<source
-								media={theme.desktop}
-								data-srcset="https://via.placeholder.com/350x350/000000.png?text=Dummy+Jewellery+Image"
-							/>
-							<img
+							<CardImg
 								data-src="https://via.placeholder.com/350x350/000000.png?text=Dummy+Jewellery+Image"
 								alt={heading}
 								className="lazyload"
