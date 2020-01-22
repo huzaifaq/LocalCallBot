@@ -38,6 +38,10 @@ const SectionWrapper = styled.section`
 	flex-direction: row;
 	width: 100%;
 	padding: 16px 0;
+	border-bottom: 1px solid ${props => props.theme.gray};
+	&:last-child {
+		border-bottom: 0px;
+	}
 	@media ${props => props.theme.mobileL} {
 		flex-direction: column;
 	}
@@ -68,6 +72,7 @@ const InfoContainer = styled.div`
 const InfoHeading = styled.div``
 const InfoAnchor = styled.a`
 	display: flex;
+	margin: 12px 0;
 	color: ${props => props.theme.textBlack};
 	&:hover {
 		color: ${props => props.theme.activeText};
