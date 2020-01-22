@@ -73,6 +73,11 @@ const InfoHeading = styled.div``
 const InfoAnchorContainer = styled.div`
 	display: flex;
 	margin: 12px 0;
+	justify-content: flex-end;
+
+	@media ${props => props.theme.mobileL} {
+		justify-content: center;
+	}
 `
 const InfoAnchor = styled.a`
 	color: ${props => props.theme.textBlack};
@@ -119,7 +124,7 @@ const Footer = () => {
 					<InfoWrapper>
 						<InfoContainer>
 							<InfoHeading>
-								For queries please contact any of the following
+								For queries please contact us
 							</InfoHeading>
 							<InfoAnchorContainer>
 								<InfoAnchor href="tel: +919820062432">
