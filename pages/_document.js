@@ -44,7 +44,7 @@ class MyDocument extends Document {
 					<meta name="theme-color" content="#cccccc" />
 					<meta
 						name="Description"
-						content="Sadiqali's Jewellery Services"
+						content="Crafted Jewellers - Jewellery Services"
 					/>
 					<meta
 						name="viewport"
