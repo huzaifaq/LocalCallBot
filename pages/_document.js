@@ -1,6 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import { registerServiceWorker } from '../helpers/utils'
+import { websiteDescription, websiteTitle } from '../helpers/constants'
 import SEO from '../components/SEO'
 import GTM from '../components/GTM'
 
@@ -42,13 +43,24 @@ class MyDocument extends Document {
 			<Html lang="en">
 				<Head>
 					<meta name="theme-color" content="#cccccc" />
-					<meta
-						name="Description"
-						content="Crafted Jewellers - Jewellery Services"
-					/>
+					<meta name="Description" content={websiteDescription} />
 					<meta
 						name="viewport"
 						content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui"
+					/>
+					<meta property="og:title" content={websiteTitle} />
+					<meta property="og:type" content="webite" />
+					<meta
+						property="og:url"
+						content="https://craftedjewellers.in/"
+					/>
+					<meta
+						property="og:image"
+						content="https://craftedjewellers.in/crafted-jewellers-logo-594x60.png"
+					/>
+					<meta
+						property="og:description"
+						content={websiteDescription}
 					/>
 					<link rel="manifest" href="/manifest.json" />
 					<link
