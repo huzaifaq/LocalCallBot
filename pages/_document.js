@@ -2,6 +2,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import { registerServiceWorker } from '../helpers/utils'
 import SEO from '../components/SEO'
+import GTM from '../components/GTM'
 
 const env = {
 	TIER: process.env.TIER,
@@ -55,6 +56,7 @@ class MyDocument extends Document {
 						href="/images/icons/crafted-jewellers-192.png"
 					/>
 					{registerServiceWorker()}
+					<GTM />
 					<SEO />
 				</Head>
 				<body>
