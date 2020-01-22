@@ -70,9 +70,11 @@ const InfoContainer = styled.div`
 	padding: 0 20px;
 `
 const InfoHeading = styled.div``
-const InfoAnchor = styled.a`
+const InfoAnchorContainer = styled.div`
 	display: flex;
 	margin: 12px 0;
+`
+const InfoAnchor = styled.a`
 	color: ${props => props.theme.textBlack};
 	&:hover {
 		color: ${props => props.theme.activeText};
@@ -119,18 +121,24 @@ const Footer = () => {
 							<InfoHeading>
 								For queries please contact any of the following
 							</InfoHeading>
-							<InfoAnchor href="tel: +919820062432">
-								Tel: +919820062432
-							</InfoAnchor>
-							<InfoAnchor href="tel: +919930757552">
-								Tel: +919930757552
-							</InfoAnchor>
-							<InfoAnchor
-								title="Send mail to support@craftedjewellers.in"
-								href="mailto: support@craftedjewellers.in"
-							>
-								support@craftedjewellers.in
-							</InfoAnchor>
+							<InfoAnchorContainer>
+								<InfoAnchor href="tel: +919820062432">
+									Tel: +919820062432
+								</InfoAnchor>
+							</InfoAnchorContainer>
+							<InfoAnchorContainer>
+								<InfoAnchor href="tel: +919930757552">
+									Tel: +919930757552
+								</InfoAnchor>
+							</InfoAnchorContainer>
+							<InfoAnchorContainer>
+								<InfoAnchor
+									title="Send mail to support@craftedjewellers.in"
+									href="mailto: support@craftedjewellers.in"
+								>
+									support@craftedjewellers.in
+								</InfoAnchor>
+							</InfoAnchorContainer>
 						</InfoContainer>
 					</InfoWrapper>
 				</SectionWrapper>
