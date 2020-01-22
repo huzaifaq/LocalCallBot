@@ -79,7 +79,6 @@ const TermsWrapper = styled.div`
 	width: 100%;
 	justify-content: center;
 `
-const TermsContainer = styled(Link)``
 
 const TermsAnchor = styled.a`
 	cursor: pointer;
@@ -101,12 +100,9 @@ const Footer = () => {
 				</LogoWrapper>
 				<SectionWrapper>
 					<TermsWrapper>
-						<TermsContainer
-							href="/terms-and-conditions"
-							prefetch={false}
-						>
+						<Link href="/terms-and-conditions" prefetch={false}>
 							<TermsAnchor>Terms and Conditions</TermsAnchor>
-						</TermsContainer>
+						</Link>
 					</TermsWrapper>
 				</SectionWrapper>
 				<SectionWrapper>
@@ -119,7 +115,7 @@ const Footer = () => {
 								For queries please contact any of the following
 							</InfoHeading>
 							<InfoAnchor href="tel: +919820062432">
-								Tel: +91982006243
+								Tel: +919820062432
 							</InfoAnchor>
 							<InfoAnchor href="tel: +919930757552">
 								Tel: +919930757552

@@ -48,3 +48,10 @@
 -   Add line height in body
 -   Change title
 -   Modify media queries
+
+# 1.0.3
+
+-   Add local business schema
+-   Add website schema
+-   Add service schema
+-   Add Google analytics and page view tracking
