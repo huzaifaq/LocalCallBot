@@ -1,3 +1,5 @@
+/* global window */
+
 export const registerServiceWorker = () => {
 	return (
 		/* eslint-disable react/no-danger */
@@ -35,6 +37,18 @@ export const convertToURLIdentifier = value => {
 		.toLowerCase()
 		.split(' ')
 		.join('-')
+}
+
+export const readTier = () => {
+	/* eslint-disable no-underscore-dangle */
+	if (typeof window !== 'undefined' && window.__ENV__) {
+		return window.__ENV__.TIER || 'production'
+	}
+	if (process) {
+		return process.env.TIER || 'production'
+	}
+	return 'production'
+	/* eslint-enable no-underscore-dangle */
 }
 
 export default undefined
