@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Head from 'next/head'
+import { websiteTitle } from '../helpers/constants'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -21,9 +22,7 @@ const withLayout = Page => {
 		return (
 			<PageWrapper>
 				<Head>
-					<title key="title">
-						Crafted Jewellers - Jewellery Services
-					</title>
+					<title key="title">{websiteTitle}</title>
 				</Head>
 				<Header />
 				<WithLayoutWrapper>
