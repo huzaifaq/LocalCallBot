@@ -45,7 +45,7 @@ const MenuWrapper = styled.div`
 `
 const MenuItem = styled.div`
 	display: flex;
-	padding: 10px 20px;
+	margin: 10px 20px;
 	cursor: pointer;
 	&:hover {
 		@media ${props => props.theme.laptop} {

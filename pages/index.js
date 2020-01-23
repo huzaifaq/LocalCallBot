@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import styled, { keyframes } from 'styled-components'
+import { CDN } from '../helpers/constants'
 
 import withLayout from '../components/Layout'
 
@@ -75,7 +76,7 @@ const Index = () => {
 		<React.Fragment>
 			<Section>
 				<SectionVideo
-					src="https://cdn.craftedjewellers.in/videos/engagement-rings-nb.mp4"
+					src={`${CDN}videos/engagement-rings-nb.mp4`}
 					autoPlay
 					muted
 					loop
@@ -111,8 +112,4 @@ const Index = () => {
 	)
 }
 
-const mapStateToProps = () => {
-	return {}
-}
-
-export default connect(mapStateToProps)(withLayout(Index))
+export default connect()(withLayout(Index))

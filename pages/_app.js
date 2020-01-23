@@ -16,17 +16,6 @@ import { TrackPageView } from '../helpers/analytics'
 Router.events.on('routeChangeComplete', () => TrackPageView())
 
 class CraftedJewellers extends App {
-	// Only uncomment this method if you have blocking data requirements for
-	// every single page in your application. This disables the ability to
-	// perform automatic static optimization, causing every page in your app to
-	// be server-side rendered.
-	// static async getInitialProps(appContext) {
-	// 	// calls page's `getInitialProps` and fills `appProps.pageProps`
-	// 	const appProps = await App.getInitialProps(appContext)
-
-	// 	return { ...appProps }
-	// }
-
 	render() {
 		const { Component, pageProps, store } = this.props
 		return (

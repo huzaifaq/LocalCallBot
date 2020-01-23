@@ -12,13 +12,14 @@ if (workbox) {
 
 workbox.routing.registerRoute(
 	'/',
+	// Use cache but update in the background.
 	new workbox.strategies.StaleWhileRevalidate({
 		// Use a custom cache name.
 		cacheName: 'page-cache',
 		plugins: [
 			new workbox.expiration.Plugin({
-				// Cache for a maximum of a day.
-				maxAgeSeconds: 1 * 24 * 60 * 60,
+				// Cache for a maximum of 3 days.
+				maxAgeSeconds: 3 * 24 * 60 * 60,
 			}),
 		],
 	})
@@ -26,12 +27,13 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
 	/\/api\//,
+	// Use cache but update in the background.
 	new workbox.strategies.StaleWhileRevalidate({
 		cacheName: 'api-cache',
 		plugins: [
 			new workbox.expiration.Plugin({
-				// Cache for a maximum of a day.
-				maxAgeSeconds: 1 * 24 * 60 * 60,
+				// Cache for a maximum of 3 days.
+				maxAgeSeconds: 3 * 24 * 60 * 60,
 			}),
 		],
 	})
@@ -39,19 +41,31 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
 	/\.js$/,
+	// Use cache but update in the background.
 	new workbox.strategies.StaleWhileRevalidate({
 		// Use a custom cache name.
 		cacheName: 'js-cache',
+		plugins: [
+			new workbox.expiration.Plugin({
+				// Cache for a maximum of 3 days.
+				maxAgeSeconds: 3 * 24 * 60 * 60,
+			}),
+		],
 	})
 )
 
 workbox.routing.registerRoute(
-	// Cache CSS files.
 	/\.css$/,
 	// Use cache but update in the background.
 	new workbox.strategies.StaleWhileRevalidate({
 		// Use a custom cache name.
 		cacheName: 'css-cache',
+		plugins: [
+			new workbox.expiration.Plugin({
+				// Cache for a maximum of 3 days.
+				maxAgeSeconds: 3 * 24 * 60 * 60,
+			}),
+		],
 	})
 )
 
@@ -66,29 +80,11 @@ workbox.routing.registerRoute(
 			new workbox.expiration.Plugin({
 				// Cache only 60 images.
 				maxEntries: 60,
-				// Cache for a maximum of a day.
-				maxAgeSeconds: 1 * 24 * 60 * 60,
+				// Cache for a maximum of 7 days.
+				maxAgeSeconds: 7 * 24 * 60 * 60,
+				// Purge on Quota error
+				purgeOnQuotaError: true,
 			}),
 		],
 	})
 )
-
-workbox.routing.registerRoute(
-	// Cache video files.
-	/\.(?:mp4)$/,
-	// Use the cache if it's available.
-	new workbox.strategies.CacheFirst({
-		// Use a custom cache name.
-		cacheName: 'video-cache',
-		plugins: [
-			new workbox.expiration.Plugin({
-				// Cache only 20 images.
-				maxEntries: 20,
-				// Cache for a maximum of 2 days.
-				maxAgeSeconds: 2 * 24 * 60 * 60,
-			}),
-		],
-	})
-)
-
-/* eslint-disable */

@@ -38,6 +38,10 @@ const SectionWrapper = styled.section`
 	flex-direction: row;
 	width: 100%;
 	padding: 16px 0;
+	border-bottom: 1px solid ${props => props.theme.gray};
+	&:last-child {
+		border-bottom: 0px;
+	}
 	@media ${props => props.theme.mobileL} {
 		flex-direction: column;
 	}
@@ -66,8 +70,16 @@ const InfoContainer = styled.div`
 	padding: 0 20px;
 `
 const InfoHeading = styled.div``
-const InfoAnchor = styled.a`
+const InfoAnchorContainer = styled.div`
 	display: flex;
+	margin: 12px 0;
+	justify-content: flex-end;
+
+	@media ${props => props.theme.mobileL} {
+		justify-content: center;
+	}
+`
+const InfoAnchor = styled.a`
 	color: ${props => props.theme.textBlack};
 	&:hover {
 		color: ${props => props.theme.activeText};
@@ -112,20 +124,26 @@ const Footer = () => {
 					<InfoWrapper>
 						<InfoContainer>
 							<InfoHeading>
-								For queries please contact any of the following
+								For queries please contact us
 							</InfoHeading>
-							<InfoAnchor href="tel: +919820062432">
-								Tel: +919820062432
-							</InfoAnchor>
-							<InfoAnchor href="tel: +919930757552">
-								Tel: +919930757552
-							</InfoAnchor>
-							<InfoAnchor
-								title="Send mail to support@craftedjewellers.in"
-								href="mailto: support@craftedjewellers.in"
-							>
-								support@craftedjewellers.in
-							</InfoAnchor>
+							<InfoAnchorContainer>
+								<InfoAnchor href="tel: +919820062432">
+									Tel: +919820062432
+								</InfoAnchor>
+							</InfoAnchorContainer>
+							<InfoAnchorContainer>
+								<InfoAnchor href="tel: +919930757552">
+									Tel: +919930757552
+								</InfoAnchor>
+							</InfoAnchorContainer>
+							<InfoAnchorContainer>
+								<InfoAnchor
+									title="Send mail to support@craftedjewellers.in"
+									href="mailto: support@craftedjewellers.in"
+								>
+									support@craftedjewellers.in
+								</InfoAnchor>
+							</InfoAnchorContainer>
 						</InfoContainer>
 					</InfoWrapper>
 				</SectionWrapper>
