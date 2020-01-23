@@ -56,7 +56,7 @@ class MyDocument extends Document {
 					/>
 					<meta
 						property="og:image"
-						content="https://craftedjewellers.in/crafted-jewellers-logo-594x60.png"
+						content="https://craftedjewellers.in/images/icons/crafted-jewellers-192.png"
 					/>
 					<meta
 						property="og:description"
