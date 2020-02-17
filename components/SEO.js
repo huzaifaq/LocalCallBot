@@ -1,4 +1,5 @@
 import React from 'react'
+import Organization from './SEO/Organization'
 import LocalBusiness from './SEO/LocalBusiness'
 import WebSite from './SEO/WebSite'
 import Service from './SEO/Service'
@@ -8,6 +9,7 @@ const SEO = () => (
 		<WebSite />
 		<LocalBusiness />
 		<Service />
+		<Organization />
 	</React.Fragment>
 )
 

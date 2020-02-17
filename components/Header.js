@@ -30,6 +30,7 @@ const LogoWrapper = styled.div`
 	height: 20px;
 	@media ${props => props.theme.mobileL} {
 		height: 60px;
+		max-width: 100px;
 	}
 `
 const LogoPicture = styled.picture``
