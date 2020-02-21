@@ -98,6 +98,17 @@ const TermsAnchor = styled.a`
 	text-decoration: underline;
 `
 
+const CopyrightContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	width: calc(100% - 40px);
+	font-size: 12px;
+	padding: 0 20px;
+	@media ${props => props.theme.mobileL} {
+		font-size: 8px;
+	}
+`
+
 const Footer = () => {
 	return (
 		<FooterWrapper>
@@ -146,6 +157,12 @@ const Footer = () => {
 							</InfoAnchorContainer>
 						</InfoContainer>
 					</InfoWrapper>
+				</SectionWrapper>
+				<SectionWrapper>
+					<CopyrightContainer>
+						Copyright 2020 © Zavtin Jewellers (OPC) Pvt. Ltd. All
+						Rights Reserved.
+					</CopyrightContainer>
 				</SectionWrapper>
 			</FooterContainer>
 		</FooterWrapper>
