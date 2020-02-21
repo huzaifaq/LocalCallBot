@@ -21,7 +21,7 @@ const CardWrapper = styled.div`
 	margin: 40px 12px 0;
 	cursor: pointer;
 	border-radius: 8px;
-	box-shadow: 0 0px 8px 0px ${props => props.theme.gray};
+	box-shadow: 0 0px 8px 0px ${props => props.theme.lightBrown};
 	background-color: ${props => props.theme.white};
 	border: 1px solid ${props => props.theme.gray};
 	animation: ${fadeIn} 0.3s ease-in;
@@ -34,7 +34,7 @@ const CardWrapper = styled.div`
 	}
 	&:hover {
 		transform: scale(1.01);
-		border-color: ${props => props.theme.gold};
+		border-color: ${props => props.theme.lightBrown};
 	}
 `
 const CardContainer = styled.div``

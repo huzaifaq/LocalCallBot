@@ -6,10 +6,13 @@ const FooterWrapper = styled.div`
 	height: auto;
 	background-color: ${props => props.theme.white};
 	align-items: center;
-	box-shadow: 0 0px 8px 0px ${props => props.theme.gray};
+	box-shadow: 0 0px 8px 0px ${props => props.theme.lightBrown};
 	justify-content: center;
 	z-index: ${props => props.theme.HeaderZ};
 	user-select: none;
+	border-top-right-radius: 40px;
+	border-top-left-radius: 40px;
+	overflow: hidden;
 `
 const FooterContainer = styled.div`
 	display: flex;
@@ -25,8 +28,8 @@ const LogoWrapper = styled.div`
 	flex: 1;
 	padding: 20px 0;
 	width: 100%;
-	border-bottom: 1px solid ${props => props.theme.gray};
-	border-top: 1px solid ${props => props.theme.gray};
+	border-bottom: 1px solid ${props => props.theme.lightBrown};
+	border-top: 1px solid ${props => props.theme.lightBrown};
 	justify-content: center;
 `
 const Logo = styled.img`
@@ -38,7 +41,7 @@ const SectionWrapper = styled.section`
 	flex-direction: row;
 	width: 100%;
 	padding: 16px 0;
-	border-bottom: 1px solid ${props => props.theme.gray};
+	border-bottom: 1px solid ${props => props.theme.lightBrown};
 	&:last-child {
 		border-bottom: 0px;
 	}
@@ -98,6 +101,17 @@ const TermsAnchor = styled.a`
 	text-decoration: underline;
 `
 
+const CopyrightContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	width: calc(100% - 40px);
+	font-size: 12px;
+	padding: 0 20px;
+	@media ${props => props.theme.mobileL} {
+		font-size: 8px;
+	}
+`
+
 const Footer = () => {
 	return (
 		<FooterWrapper>
@@ -146,6 +160,12 @@ const Footer = () => {
 							</InfoAnchorContainer>
 						</InfoContainer>
 					</InfoWrapper>
+				</SectionWrapper>
+				<SectionWrapper>
+					<CopyrightContainer>
+						Copyright 2020 © Zavtin Jewellers (OPC) Pvt. Ltd. All
+						Rights Reserved.
+					</CopyrightContainer>
 				</SectionWrapper>
 			</FooterContainer>
 		</FooterWrapper>
