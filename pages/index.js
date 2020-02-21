@@ -11,7 +11,7 @@ const SlideIn = keyframes`
   	}
 
 	to {
-		margin-top: 0px;
+		margin-top: 20px;
 	}
 `
 
@@ -24,11 +24,15 @@ const Section = styled.section`
 	align-items: center;
 	animation: ${SlideIn} 0.3s ease-in;
 	position: relative;
-	margin-top: 20px;
+	border-radius: ${props => (props.round ? '40px' : '')};
+	margin: ${props => (props.round ? '20px 20px 0 20px' : '20px 0 0 0')};
+	box-shadow: ${props =>
+		props.boxshadow ? `0 4px 2px 0 ${props.theme.lightBrown}` : ''};
+	overflow: hidden;
 
-	&:first-child {
+	/* &:first-child {
 		margin-top: 0px;
-	}
+	} */
 
 	&:last-child {
 		margin-bottom: 50px;
@@ -52,8 +56,10 @@ const SectionParagraph = styled.p`
 	z-index: ${props => props.theme.elementsAboveVideoZ};
 	color: ${props => props.theme.textBlack};
 	font-size: 20px;
+	padding: 0 20px;
 	@media ${props => props.theme.mobileL} {
 		font-size: 16px;
+		padding: 0;
 	}
 `
 
@@ -74,7 +80,7 @@ const Index = () => {
 
 	return (
 		<React.Fragment>
-			<Section>
+			<Section round boxshadow>
 				<SectionVideo
 					src={`${CDN}videos/engagement-rings-nb.mp4`}
 					autoPlay
@@ -87,21 +93,21 @@ const Index = () => {
 					One stop for all of the finest jewellery services
 				</SectionParagraph>
 			</Section>
-			<Section>
+			<Section round boxshadow>
 				<SectionHeading>Precious Stones</SectionHeading>
 				<SectionParagraph>
 					Need a perfect diamond for the ring? Checkout our collection
 					of precious stones
 				</SectionParagraph>
 			</Section>
-			<Section>
+			<Section round boxshadow>
 				<SectionHeading>Polishing</SectionHeading>
 				<SectionParagraph>
 					Is your jewellery looking old or needs cleaning? Polish your
 					jewellery to make it look new
 				</SectionParagraph>
 			</Section>
-			<Section>
+			<Section round boxshadow>
 				<SectionHeading>Repairing</SectionHeading>
 				<SectionParagraph>
 					Does your jewellery look out of shape? Have you lost a piece

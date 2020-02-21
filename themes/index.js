@@ -3,8 +3,9 @@ const theme = {
 	gray: '#CCCCCC',
 	lightGray: '#F2F2F2',
 	textBlack: '#272727',
-	activeText: '#FF3B00',
+	activeText: '#BC9358',
 	gold: 'gold',
+	lightBrown: '#B5A59B',
 }
 
 const dimensions = {

@@ -19,41 +19,34 @@ const SidebarWrapper = styled.div`
 	width: 100%;
 	max-width: 250px;
 	right: 0;
-	top: 84px;
+	top: 96px;
 	transition: all 0.2s ease-in;
-	box-shadow: 0px 0px 2px 0px ${props => props.theme.gold};
+	box-shadow: 0px 0px 2px 0px ${props => props.theme.lightBrown};
 	min-height: 300px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 4px 0px 0px 4px;
+	border-radius: 40px 0px 0px 40px;
 	user-select: none;
+	z-index: ${props => props.theme.headerZ};
 
 	&.fade-enter {
-		@media ${props => props.theme.laptop} {
-			right: -250px;
-		}
+		right: -250px;
 		opacity: 0;
 	}
 
 	&.fade-enter-active {
-		@media ${props => props.theme.laptop} {
-			right: 0;
-		}
+		right: 0;
 		opacity: 1;
 	}
 
 	&.fade-exit {
-		@media ${props => props.theme.laptop} {
-			right: 0;
-		}
+		right: 0;
 		opacity: 1;
 	}
 
 	&.fade-exit-active {
-		@media ${props => props.theme.laptop} {
-			right: -250px;
-		}
+		right: -250px;
 		opacity: 0;
 	}
 `
@@ -64,7 +57,7 @@ const SidebarContainer = styled.div`
 const SidebarItem = styled.div`
 	transition: font-size 0.1s ease-out;
 	height: 60px;
-	border-top: 1px solid ${props => props.theme.gold};
+	border-top: 1px solid ${props => props.theme.lightBrown};
 	display: flex;
 	justify-content: center;
 	align-items: center;
