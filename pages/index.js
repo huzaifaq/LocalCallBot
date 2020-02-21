@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import styled, { keyframes } from 'styled-components'
 import { CDN } from '../helpers/constants'

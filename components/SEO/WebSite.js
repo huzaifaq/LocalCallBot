@@ -1,5 +1,3 @@
-import React from 'react'
-
 const dataObject = {
 	'@context': 'http://schema.org',
 	'@type': 'WebSite',

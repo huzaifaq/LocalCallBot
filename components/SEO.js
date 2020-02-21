@@ -1,4 +1,3 @@
-import React from 'react'
 import Organization from './SEO/Organization'
 import LocalBusiness from './SEO/LocalBusiness'
 import WebSite from './SEO/WebSite'
