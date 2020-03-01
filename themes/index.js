@@ -13,7 +13,8 @@ const dimensions = {
 }
 
 const zIndexes = {
-	headerZ: 99,
+	headerZ: 100,
+	overlayZ: 99,
 	backgroundVideoZ: 97,
 	elementsAboveVideoZ: 98,
 }

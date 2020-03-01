@@ -9,7 +9,7 @@ const OverlayWrapper = styled.div`
 	height: 100%;
 	transition: all 0.3s ease-in;
 	opacity: 0.3;
-	z-index: ${props => props.theme.elementsAboveVideoZ};
+	z-index: ${props => props.theme.overlayZ};
 
 	&.fade-enter {
 		opacity: 0;
