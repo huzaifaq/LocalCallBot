@@ -6,7 +6,7 @@ const FooterWrapper = styled.div`
 	height: auto;
 	background-color: ${props => props.theme.white};
 	align-items: center;
-	box-shadow: 0 0px 8px 0px ${props => props.theme.lightBrown};
+	box-shadow: 0 0px 8px 0px ${props => props.theme.utility};
 	justify-content: center;
 	z-index: ${props => props.theme.HeaderZ};
 	user-select: none;
@@ -28,8 +28,8 @@ const LogoWrapper = styled.div`
 	flex: 1;
 	padding: 20px 0;
 	width: 100%;
-	border-bottom: 1px solid ${props => props.theme.lightBrown};
-	border-top: 1px solid ${props => props.theme.lightBrown};
+	border-bottom: 1px solid ${props => props.theme.utility};
+	border-top: 1px solid ${props => props.theme.utility};
 	justify-content: center;
 `
 const Logo = styled.img`
@@ -41,7 +41,7 @@ const SectionWrapper = styled.section`
 	flex-direction: row;
 	width: 100%;
 	padding: 16px 0;
-	border-bottom: 1px solid ${props => props.theme.lightBrown};
+	border-bottom: 1px solid ${props => props.theme.utility};
 	&:last-child {
 		border-bottom: 0px;
 	}

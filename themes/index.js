@@ -4,8 +4,7 @@ const theme = {
 	lightGray: '#F2F2F2',
 	textBlack: '#272727',
 	activeText: '#BC9358',
-	gold: 'gold',
-	lightBrown: '#B5A59B',
+	utility: '#B2B2B2',
 }
 
 const dimensions = {
