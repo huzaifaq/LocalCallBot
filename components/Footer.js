@@ -119,7 +119,7 @@ const Footer = () => {
 				<LogoWrapper>
 					<Link href="/" prefetch={false}>
 						<Logo
-							src="/images/icons/crafted-jewellers-logo-594x60.png"
+							src="/images/icons/zavtin-horizontal.png"
 							alt="Logo"
 						/>
 					</Link>
