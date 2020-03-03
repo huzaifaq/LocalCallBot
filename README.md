@@ -1,4 +1,4 @@
-# Crafted Jewellers
+# Zavtin
 
 Jerjis's Jewellery Store. An attempt to bring my father's jewellery business online.
 

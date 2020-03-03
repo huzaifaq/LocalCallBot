@@ -4,9 +4,8 @@ const dataObject = {
 	serviceType: 'Jewellery maintenance',
 	provider: {
 		'@type': 'LocalBusiness',
-		name: 'Crafted Jewellers',
-		image:
-			'https://craftedjewellers.in/images/icons/crafted-jewellers-logo-594x60.png',
+		name: 'Zavtin',
+		image: 'https://craftedjewellers.in/images/icons/zavtin-horizontal.png',
 		telephone: '+919930757552',
 		email: 'support@craftedjewellers.in',
 		priceRange: '$$$',

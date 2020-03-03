@@ -88,7 +88,7 @@ const Index = () => {
 					loop
 					ref={videoRef}
 				/>
-				<SectionHeading>Welcome to Crafted Jewellers</SectionHeading>
+				<SectionHeading>Welcome to Zavtin</SectionHeading>
 				<SectionParagraph>
 					One stop for all of the finest jewellery services
 				</SectionParagraph>
