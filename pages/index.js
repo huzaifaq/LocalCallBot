@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import styled, { keyframes } from 'styled-components'
 import { CDN } from '../helpers/constants'
@@ -27,7 +27,7 @@ const Section = styled.section`
 	border-radius: ${props => (props.round ? '40px' : '')};
 	margin: ${props => (props.round ? '20px 20px 0 20px' : '20px 0 0 0')};
 	box-shadow: ${props =>
-		props.boxshadow ? `0 4px 2px 0 ${props.theme.lightBrown}` : ''};
+		props.boxshadow ? `0 4px 2px 0 ${props.theme.utility}` : ''};
 	overflow: hidden;
 
 	/* &:first-child {
@@ -88,7 +88,7 @@ const Index = () => {
 					loop
 					ref={videoRef}
 				/>
-				<SectionHeading>Welcome to Crafted Jewellers</SectionHeading>
+				<SectionHeading>Welcome to Zavtin</SectionHeading>
 				<SectionParagraph>
 					One stop for all of the finest jewellery services
 				</SectionParagraph>

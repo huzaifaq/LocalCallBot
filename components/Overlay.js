@@ -2,14 +2,14 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const OverlayWrapper = styled.div`
-	background-color: ${props => props.theme.lightBrown};
+	background-color: ${props => props.theme.utility};
 	position: fixed;
 	top: 0;
 	width: 100%;
 	height: 100%;
 	transition: all 0.3s ease-in;
 	opacity: 0.3;
-	z-index: ${props => props.theme.elementsAboveVideoZ};
+	z-index: ${props => props.theme.overlayZ};
 
 	&.fade-enter {
 		opacity: 0;

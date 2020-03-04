@@ -12,17 +12,17 @@ const terms = () => (
 			<strong>Terms and Conditions</strong>
 		</h2>
 
-		<p>Welcome to Crafted Jewellers!</p>
+		<p>Welcome to Zavtin!</p>
 
 		<p>
 			These terms and conditions outline the rules and regulations for the
-			use of Crafted Jewellers's Website, located at craftedjewellers.in.
+			use of Zavtin's Website, located at craftedjewellers.in.
 		</p>
 
 		<p>
 			By accessing this website we assume you accept these terms and
-			conditions. Do not continue to use Crafted Jewellers if you do not
-			agree to take all of the terms and conditions stated on this page.
+			conditions. Do not continue to use Zavtin if you do not agree to
+			take all of the terms and conditions stated on this page.
 		</p>
 
 		<p>
@@ -48,9 +48,8 @@ const terms = () => (
 		</h3>
 
 		<p>
-			We employ the use of cookies. By accessing Crafted Jewellers, you
-			agreed to use cookies in agreement with the Crafted Jewellers's
-			Privacy Policy.
+			We employ the use of cookies. By accessing Zavtin, you agreed to use
+			cookies in agreement with the Zavtin's Privacy Policy.
 		</p>
 
 		<p>
@@ -66,21 +65,19 @@ const terms = () => (
 		</h3>
 
 		<p>
-			Unless otherwise stated, Crafted Jewellers and/or its licensors own
-			the intellectual property rights for all material on Crafted
-			Jewellers. All intellectual property rights are reserved. You may
-			access this from Crafted Jewellers for your own personal use
-			subjected to restrictions set in these terms and conditions.
+			Unless otherwise stated, Zavtin and/or its licensors own the
+			intellectual property rights for all material on Crafted Jewellers.
+			All intellectual property rights are reserved. You may access this
+			from Zavtin for your own personal use subjected to restrictions set
+			in these terms and conditions.
 		</p>
 
 		<p>You must not:</p>
 		<ul>
-			<li>Republish material from Crafted Jewellers</li>
-			<li>Sell, rent or sub-license material from Crafted Jewellers</li>
-			<li>
-				Reproduce, duplicate or copy material from Crafted Jewellers
-			</li>
-			<li>Redistribute content from Crafted Jewellers</li>
+			<li>Republish material from Zavtin</li>
+			<li>Sell, rent or sub-license material from Zavtin</li>
+			<li>Reproduce, duplicate or copy material from Zavtin</li>
+			<li>Redistribute content from Zavtin</li>
 		</ul>
 
 		<p>This Agreement shall begin on the date hereof.</p>
@@ -88,21 +85,20 @@ const terms = () => (
 		<p>
 			Parts of this website offer an opportunity for users to post and
 			exchange opinions and information in certain areas of the website.
-			Crafted Jewellers does not filter, edit, publish or review Comments
-			prior to their presence on the website. Comments do not reflect the
-			views and opinions of Crafted Jewellers,its agents and/or
-			affiliates. Comments reflect the views and opinions of the person
-			who post their views and opinions. To the extent permitted by
-			applicable laws, Crafted Jewellers shall not be liable for the
-			Comments or for any liability, damages or expenses caused and/or
-			suffered as a result of any use of and/or posting of and/or
-			appearance of the Comments on this website.
+			Zavtin does not filter, edit, publish or review Comments prior to
+			their presence on the website. Comments do not reflect the views and
+			opinions of Zavtin,its agents and/or affiliates. Comments reflect
+			the views and opinions of the person who post their views and
+			opinions. To the extent permitted by applicable laws, Zavtin shall
+			not be liable for the Comments or for any liability, damages or
+			expenses caused and/or suffered as a result of any use of and/or
+			posting of and/or appearance of the Comments on this website.
 		</p>
 
 		<p>
-			Crafted Jewellers reserves the right to monitor all Comments and to
-			remove any Comments which can be considered inappropriate, offensive
-			or causes breach of these Terms and Conditions.
+			Zavtin reserves the right to monitor all Comments and to remove any
+			Comments which can be considered inappropriate, offensive or causes
+			breach of these Terms and Conditions.
 		</p>
 
 		<p>You warrant and represent that:</p>
@@ -129,9 +125,9 @@ const terms = () => (
 		</ul>
 
 		<p>
-			You hereby grant Crafted Jewellers a non-exclusive license to use,
-			reproduce, edit and authorize others to use, reproduce and edit any
-			of your Comments in any and all forms, formats or media.
+			You hereby grant Zavtin a non-exclusive license to use, reproduce,
+			edit and authorize others to use, reproduce and edit any of your
+			Comments in any and all forms, formats or media.
 		</p>
 
 		<h3>
@@ -203,9 +199,9 @@ const terms = () => (
 		<p>
 			If you are one of the organizations listed in paragraph 2 above and
 			are interested in linking to our website, you must inform us by
-			sending an e-mail to Crafted Jewellers. Please include your name,
-			your organization name, contact information as well as the URL of
-			your site, a list of any URLs from which you intend to link to our
+			sending an e-mail to Zavtin. Please include your name, your
+			organization name, contact information as well as the URL of your
+			site, a list of any URLs from which you intend to link to our
 			Website, and a list of the URLs on our site to which you would like
 			to link. Wait 2-3 weeks for a response.
 		</p>
@@ -223,8 +219,8 @@ const terms = () => (
 		</ul>
 
 		<p>
-			No use of Crafted Jewellers's logo or other artwork will be allowed
-			for linking absent a trademark license agreement.
+			No use of Zavtin's logo or other artwork will be allowed for linking
+			absent a trademark license agreement.
 		</p>
 
 		<h3>

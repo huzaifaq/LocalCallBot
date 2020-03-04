@@ -14,7 +14,7 @@ const HeaderWrapper = styled.div`
 	background-color: ${props => props.theme.white};
 	align-items: center;
 	padding: 8px 16px;
-	box-shadow: 0 0px 8px 0px ${props => props.theme.lightBrown};
+	box-shadow: 0 0px 8px 0px ${props => props.theme.utility};
 	justify-content: center;
 	z-index: ${props => props.theme.headerZ};
 	user-select: none;
@@ -30,7 +30,7 @@ const HeaderContainer = styled.div`
 `
 const LogoWrapper = styled.div`
 	display: flex;
-	height: 20px;
+	height: 44px;
 	max-width: 210px;
 	@media ${props => props.theme.mobileL} {
 		height: 60px;
@@ -71,10 +71,10 @@ const Header = () => {
 							<LogoPicture>
 								<source
 									media={theme.mobileL}
-									srcSet="/images/icons/crafted-jewellers-192.png"
+									srcSet="/images/icons/zavtin-192.png"
 								/>
 								<LogoImg
-									src="/images/icons/crafted-jewellers-logo-594x60.png"
+									src="/images/icons/zavtin-horizontal.png"
 									alt="Logo"
 								/>
 							</LogoPicture>

@@ -1,7 +1,7 @@
 const dataObject = {
 	'@context': 'http://schema.org',
 	'@type': 'WebSite',
-	name: 'Crafted Jewellers',
+	name: 'Zavtin',
 	url: 'https://craftedjewellers.in/',
 }
 

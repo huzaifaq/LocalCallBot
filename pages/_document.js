@@ -56,7 +56,7 @@ class MyDocument extends Document {
 					/>
 					<meta
 						property="og:image"
-						content="https://craftedjewellers.in/images/icons/crafted-jewellers-192.png"
+						content="https://craftedjewellers.in/images/icons/zavtin-192.png"
 					/>
 					<meta
 						property="og:description"
@@ -65,7 +65,7 @@ class MyDocument extends Document {
 					<link rel="manifest" href="/manifest.json" />
 					<link
 						rel="apple-touch-icon"
-						href="/images/icons/crafted-jewellers-192.png"
+						href="/images/icons/zavtin-192.png"
 					/>
 					{registerServiceWorker()}
 					<GTM />

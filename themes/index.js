@@ -4,8 +4,7 @@ const theme = {
 	lightGray: '#F2F2F2',
 	textBlack: '#272727',
 	activeText: '#BC9358',
-	gold: 'gold',
-	lightBrown: '#B5A59B',
+	utility: '#B2B2B2',
 }
 
 const dimensions = {
@@ -13,7 +12,8 @@ const dimensions = {
 }
 
 const zIndexes = {
-	headerZ: 99,
+	headerZ: 100,
+	overlayZ: 99,
 	backgroundVideoZ: 97,
 	elementsAboveVideoZ: 98,
 }

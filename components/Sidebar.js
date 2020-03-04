@@ -21,7 +21,7 @@ const SidebarWrapper = styled.div`
 	right: 0;
 	top: 96px;
 	transition: all 0.2s ease-in;
-	box-shadow: 0px 0px 2px 0px ${props => props.theme.lightBrown};
+	box-shadow: 0px 0px 2px 0px ${props => props.theme.utility};
 	min-height: 300px;
 	display: flex;
 	justify-content: center;
@@ -57,7 +57,7 @@ const SidebarContainer = styled.div`
 const SidebarItem = styled.div`
 	transition: font-size 0.1s ease-out;
 	height: 60px;
-	border-top: 1px solid ${props => props.theme.lightBrown};
+	border-top: 1px solid ${props => props.theme.utility};
 	display: flex;
 	justify-content: center;
 	align-items: center;
