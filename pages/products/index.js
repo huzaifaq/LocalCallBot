@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import styled, { keyframes } from 'styled-components'
 
-import withLayout from '../../../components/Layout'
-import { fetchProducts } from '../../../actions/products/ActionCreator'
-import ItemCard from '../../../components/ItemCard'
-import { genericNoData, genericErrorMsg } from '../../../helpers/constants'
-import { readIdentifierFromURL } from '../../../helpers/utils'
+import withLayout from '../../components/Layout'
+import { fetchStatus } from '../../actions/products/ActionCreator'
+import { genericNoData, genericErrorMsg } from '../../helpers/constants'
+import { readIdentifierFromURL } from '../../helpers/utils'
 
 const ItemCardWrapper = styled.div`
 	display: flex;
@@ -59,7 +58,7 @@ const Index = () => {
 	const router = useRouter()
 
 	useEffect(() => {
-		dispatch(fetchProducts(readIdentifierFromURL(router.query.category)))
+		dispatch(fetchStatus(readIdentifierFromURL(router.query.category)))
 	}, [router.query.category])
 
 	if (isError) {
@@ -74,11 +73,6 @@ const Index = () => {
 		return (
 			<ItemCardWrapper>
 				<LoadingCardTemplate />
-				<LoadingCardTemplate />
-				<LoadingCardTemplate />
-				<LoadingCardTemplate />
-				<LoadingCardTemplate />
-				<LoadingCardTemplate />
 			</ItemCardWrapper>
 		)
 	}
@@ -91,21 +85,9 @@ const Index = () => {
 		)
 	}
 
-	return data.length ? (
-		<ItemCardWrapper>
-			{data.map(product => {
-				return (
-					<ItemCard
-						category={product.category}
-						heading={product.name}
-						description={product.description}
-						itemId={product.name}
-						key={product.name}
-					/>
-				)
-			})}
-		</ItemCardWrapper>
-	) : null
+	if (data.length) {
+		return <ItemCardWrapper>DATA</ItemCardWrapper>
+	}
 }
 
 export default withLayout(Index)

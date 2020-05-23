@@ -1,11 +1,7 @@
-import {
-	REQUEST_PRODUCTS,
-	RECEIVE_PRODUCTS,
-	FAILED_PRODUCTS,
-} from './ActionTypes'
+import { REQUEST_STATUS, RECEIVE_STATUS, FAILED_STATUS } from './ActionTypes'
 
-export const requestProducts = () => ({
-	type: REQUEST_PRODUCTS,
+export const requestStatus = () => ({
+	type: REQUEST_STATUS,
 	payload: {
 		isError: false,
 		isFetching: true,
@@ -13,16 +9,16 @@ export const requestProducts = () => ({
 	},
 })
 
-export const receiveProducts = data => ({
-	type: RECEIVE_PRODUCTS,
+export const receiveStatus = data => ({
+	type: RECEIVE_STATUS,
 	payload: {
 		isFetching: false,
 		data,
 		isSuccess: true,
 	},
 })
-export const failedProducts = () => ({
-	type: FAILED_PRODUCTS,
+export const failedStatus = () => ({
+	type: FAILED_STATUS,
 	payload: {
 		isError: true,
 		isFetching: false,
