@@ -1,7 +1,7 @@
 import {
-	RECEIVE_PRODUCTS,
-	REQUEST_PRODUCTS,
-	FAILED_PRODUCTS,
+	RECEIVE_STATUS,
+	REQUEST_STATUS,
+	FAILED_STATUS,
 } from '../actions/products/ActionTypes'
 
 const initialState = {
@@ -18,9 +18,9 @@ export const getNewState = (currentState, payload) => ({
 
 const products = (state = initialState, action) => {
 	switch (action.type) {
-		case REQUEST_PRODUCTS:
-		case RECEIVE_PRODUCTS:
-		case FAILED_PRODUCTS:
+		case REQUEST_STATUS:
+		case RECEIVE_STATUS:
+		case FAILED_STATUS:
 			return getNewState(state, action.payload)
 		default:
 			return state

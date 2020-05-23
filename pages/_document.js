@@ -2,8 +2,6 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import { registerServiceWorker } from '../helpers/utils'
 import { websiteDescription, websiteTitle } from '../helpers/constants'
-import SEO from '../components/SEO'
-import GTM from '../components/GTM'
 
 const env = {
 	TIER: process.env.TIER,
@@ -56,7 +54,7 @@ class MyDocument extends Document {
 					/>
 					<meta
 						property="og:image"
-						content="https://craftedjewellers.in/images/icons/zavtin-192.png"
+						content="https://craftedjewellers.in/images/icons/bot-192.png"
 					/>
 					<meta
 						property="og:description"
@@ -65,11 +63,9 @@ class MyDocument extends Document {
 					<link rel="manifest" href="/manifest.json" />
 					<link
 						rel="apple-touch-icon"
-						href="/images/icons/zavtin-192.png"
+						href="/images/icons/bot-192.png"
 					/>
 					{registerServiceWorker()}
-					<GTM />
-					<SEO />
 				</Head>
 				<body>
 					<noscript>

@@ -8,11 +8,11 @@ const router = new Router({
 /**
  * All categories are fetched
  */
-router.get('/categories', async ctx => performDBCall(ctx, 'categories'))
+router.get('/soundboard', async ctx => performDBCall(ctx, 'categories'))
 
 /**
  * All products are fetched in a category
  */
-router.get('/products', async ctx => performDBCall(ctx, 'products'))
+router.get('/status', async ctx => performDBCall(ctx, 'products'))
 
 module.exports = router

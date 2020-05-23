@@ -1,8 +1,4 @@
-# Zavtin
-
-Jerjis's Jewellery Store. An attempt to bring my father's jewellery business online.
-
-Hosted on [craftedjewellers.in](https://craftedjewellers.in/)
+# SoundLocalBot
 
 ## Usage
 

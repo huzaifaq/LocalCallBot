@@ -1,10 +1,6 @@
-const Categories = require('../../backend/models/Categories')
-const Products = require('../../backend/models/Products')
+const Products = require('../../backend/models/Categories')
 
 const dbMapObject = {
-	categories: {
-		model: Categories,
-	},
 	products: {
 		model: Products,
 	},

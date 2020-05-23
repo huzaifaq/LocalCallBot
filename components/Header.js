@@ -71,10 +71,10 @@ const Header = () => {
 							<LogoPicture>
 								<source
 									media={theme.mobileL}
-									srcSet="/images/icons/zavtin-192.png"
+									srcSet="/images/icons/bot-192.png"
 								/>
 								<LogoImg
-									src="/images/icons/zavtin-horizontal.png"
+									src="/images/icons/bot-horizontal.png"
 									alt="Logo"
 								/>
 							</LogoPicture>

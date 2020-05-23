@@ -5,7 +5,7 @@ module.exports = {
 		const protocol = env.PROTOCOL === 'HTTP2' ? 'https://' : 'http://'
 		switch (env.TIER) {
 			case 'production':
-				return 'https://craftedjewellers.in/'
+				return 'https://soundlocalbot.in/'
 			case 'dev':
 			default:
 				return `${protocol}localhost:3000/`
