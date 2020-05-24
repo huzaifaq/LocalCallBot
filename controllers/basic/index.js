@@ -1,5 +1,9 @@
 const Products = require('../../backend/models/Categories')
-const { sendMessage } = require('../../backend/discord/discordUtilities')
+const {
+	sendMessage,
+	getChannel,
+	getAllChannels,
+} = require('../../backend/discord/discordUtilities')
 
 const dbMapObject = {
 	products: {
@@ -29,6 +33,12 @@ module.exports = {
 						ctx.query.message,
 						ctx.query.channelId
 					)
+					break
+				case 'getChannelInformation':
+					data = await getChannel(ctx.query.channelId)
+					break
+				case 'getAllChannels':
+					data = await getAllChannels()
 					break
 				default:
 					throw new Error('No Command Found')

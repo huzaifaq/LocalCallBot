@@ -1,6 +1,12 @@
 const Discord = require('discord.js')
 const { prefix, token } = require('./discordConfig')
 const { sendMessage } = require('./discordUtilities')
+const {
+	playSoundInChannel,
+	stopSound,
+	pauseSound,
+	resumeSound,
+} = require('./discordDispatcher')
 
 global.discordClient = new Discord.Client()
 
@@ -24,19 +30,23 @@ global.discordClient.on('message', async message => {
 			case 'Ping':
 				await sendMessage('Pong', message.channel.id)
 				break
+			case 'Play':
+				await playSoundInChannel(
+					message.member.voice.channel.id,
+					commandArguements[0]
+				)
+				break
+			case 'Stop':
+				stopSound()
+				break
+			case 'Pause':
+				pauseSound()
+				break
+			case 'Resume':
+				resumeSound()
+				break
 			default:
 				break
-		}
-	}
-
-	if (!message.guild) return
-
-	if (message.content === '/join') {
-		// Only try to join the sender's voice channel if they are in one themselves
-		if (message.member.voice.channel) {
-			const voiceConnection = await message.member.voice.channel.join()
-		} else {
-			message.reply('You need to join a voice channel first!')
 		}
 	}
 })
