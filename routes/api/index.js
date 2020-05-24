@@ -22,4 +22,12 @@ router.get('/sendMessage', async ctx =>
 	performDiscordAction(ctx, 'sendMessage')
 )
 
+router.get('/getChannelInformation', async ctx =>
+	performDiscordAction(ctx, 'getChannelInformation')
+)
+
+router.get('/getAllChannels', async ctx =>
+	performDiscordAction(ctx, 'getAllChannels')
+)
+
 module.exports = router

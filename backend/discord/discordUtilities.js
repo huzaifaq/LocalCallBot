@@ -7,6 +7,10 @@ const getChannel = async channelId => {
 	}
 }
 
+const getAllChannels = async () => {
+	// todo
+}
+
 const sendMessage = async (message, channelId) => {
 	try {
 		const channel = await getChannel(channelId)

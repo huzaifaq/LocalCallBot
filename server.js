@@ -21,7 +21,7 @@ require('./backend/discord/discordConnection')
 const applicationServerLog = () => {
 	console.log(
 		'\x1b[42m\x1b[37m%s\x1b[0m',
-		' Jerjis Jewellery Store Application Started '
+		' Sound Local Bot Application Started '
 	)
 	console.log('\x1b[42m\x1b[37m%s\x1b[0m', ' ENV: ', env)
 	console.log('\x1b[42m\x1b[37m%s\x1b[0m', ' TIER: ', tier)
