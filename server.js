@@ -6,7 +6,7 @@ const http2 = require('http2')
 const fs = require('fs')
 const path = require('path')
 
-const port = parseInt(process.env.PORT, 10) || 3000
+const port = parseInt(process.env.PORT, 10) || 3333
 const protocol = process.env.PROTOCOL || 'HTTP'
 const tier = process.env.TIER || 'dev'
 const env = process.env.NODE_ENV
@@ -16,6 +16,7 @@ const handle = app.getRequestHandler()
 const API = require('./routes/api')
 
 require('./backend/mongoConnection')
+require('./backend/discord/discordConnection')
 
 const applicationServerLog = () => {
 	console.log(
