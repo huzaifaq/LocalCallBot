@@ -2,7 +2,7 @@ import {
 	RECEIVE_STATUS,
 	REQUEST_STATUS,
 	FAILED_STATUS,
-} from '../actions/products/ActionTypes'
+} from '../actions/status/ActionTypes'
 
 const initialState = {
 	data: [],

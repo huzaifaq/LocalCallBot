@@ -3,18 +3,21 @@ import Head from 'next/head'
 import { websiteTitle } from '../helpers/constants'
 
 import Header from './Header'
-import Footer from './Footer'
 
 const PageWrapper = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: row;
 	background-color: ${props => props.theme.lightGray};
 	height: auto;
+	justify-content
 `
 
 const WithLayoutWrapper = styled.div`
 	background-color: ${props => props.theme.lightGray};
-	margin: 0 auto;
-	max-width: ${props => props.theme.wrapperMaxWidth};
-	min-height: 900px;
+	max-width: 100%;
+	height: 100%;
+	padding: 16px;
 `
 
 const withLayout = Page => {
@@ -28,7 +31,6 @@ const withLayout = Page => {
 				<WithLayoutWrapper>
 					<Page {...props} />
 				</WithLayoutWrapper>
-				<Footer />
 			</PageWrapper>
 		)
 	}

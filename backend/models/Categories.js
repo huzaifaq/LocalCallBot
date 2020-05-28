@@ -1,10 +1,14 @@
 const mongoose = require('mongoose')
-const { soundsCollectionName } = require('../configurator')
+const { categoriesCollectionName } = require('../configurator')
 
-const Sounds = new mongoose.Schema({
+const Categories = new mongoose.Schema({
 	name: { type: String, trim: true, default: '' },
-	assetLink: { type: String, trim: true, default: '' },
+	image: { type: String, trim: true, default: '' },
 	_id: { type: String, select: false },
 })
 
-module.exports = mongoose.model('Sounds', Sounds, soundsCollectionName)
+module.exports = mongoose.model(
+	'Categories',
+	Categories,
+	categoriesCollectionName
+)

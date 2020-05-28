@@ -1,4 +1,5 @@
-const Products = require('../../backend/models/Categories')
+const Categories = require('../../backend/models/Categories')
+const Sounds = require('../../backend/models/Sounds')
 const {
 	sendMessage,
 	getChannel,
@@ -6,8 +7,11 @@ const {
 } = require('../../backend/discord/discordUtilities')
 
 const dbMapObject = {
-	products: {
-		model: Products,
+	categories: {
+		model: Categories,
+	},
+	sounds: {
+		model: Sounds,
 	},
 }
 

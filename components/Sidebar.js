@@ -8,7 +8,7 @@ import { convertToURLIdentifier, readIdentifierFromURL } from '../helpers/utils'
 
 const SidebarWrapper = styled.div`
 	background-color: white;
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	max-width: 250px;
 	right: 0;
