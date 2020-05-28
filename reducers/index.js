@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux'
 
-import products from './products'
+import status from './status'
+import categories from './categories'
+import sounds from './sounds'
 
 const rootReducer = combineReducers({
-	products,
+	status,
+	categories,
+	sounds,
 })
 
 export default rootReducer

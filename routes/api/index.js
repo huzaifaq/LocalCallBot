@@ -9,15 +9,18 @@ const router = new Router({
 })
 
 /**
- * All categories are fetched
+ * All sounds are fetched based on category
  */
-router.get('/soundboard', async ctx => performDBCall(ctx, 'categories'))
+router.get('/soundboard', async ctx => performDBCall(ctx, 'sounds'))
 
 /**
- * All products are fetched in a category
+ * All categories are fetched
  */
-router.get('/status', async ctx => performDBCall(ctx, 'products'))
+router.get('/categories', async ctx => performDBCall(ctx, 'categories'))
 
+/**
+ * Discord Actions
+ */
 router.get('/sendMessage', async ctx =>
 	performDiscordAction(ctx, 'sendMessage')
 )
@@ -29,5 +32,10 @@ router.get('/getChannelInformation', async ctx =>
 router.get('/getAllChannels', async ctx =>
 	performDiscordAction(ctx, 'getAllChannels')
 )
+
+/**
+ * todo
+ */
+router.get('/status', async ctx => performDBCall(ctx, 'products'))
 
 module.exports = router
