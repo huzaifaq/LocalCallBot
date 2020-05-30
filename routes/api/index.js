@@ -11,7 +11,7 @@ const router = new Router({
 /**
  * All sounds are fetched based on category
  */
-router.get('/soundboard', async ctx => performDBCall(ctx, 'sounds'))
+router.get('/sounds', async ctx => performDBCall(ctx, 'sounds'))
 
 /**
  * All categories are fetched

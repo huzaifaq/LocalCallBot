@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState, useEffect } from 'react'
+import styled, { keyframes } from 'styled-components'
 import Link from 'next/link'
 import { CSSTransition } from 'react-transition-group'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 import Sidebar from './Sidebar'
 import Overlay from './Overlay'
+import { fetchCategories } from '../actions/categories/ActionCreator'
+import { genericNoData, genericErrorMsg } from '../helpers/constants'
 
 const HeaderWrapper = styled.div`
 	display: flex;
@@ -17,6 +21,7 @@ const HeaderWrapper = styled.div`
 	justify-content: center;
 	z-index: ${props => props.theme.headerZ};
 	user-select: none;
+	position: sticky;
 `
 const HeaderContainer = styled.div`
 	display: flex;
@@ -52,8 +57,47 @@ const MenuItem = styled.div`
 	}
 `
 
+const placeHolderShimmer = keyframes`
+	0% {
+		background-position: -468px 0;
+	}
+
+	100% {
+		background-position: 468px 0;
+	}
+`
+
+const LoadingCardTemplate = styled.div`
+	width: 40px;
+	height: 40px;
+	border: 1px solid gray;
+	margin: 10px 20px;
+	background: #f6f7f8;
+	background-image: linear-gradient(
+		to right,
+		#f6f7f8 0%,
+		#e7e7e7 20%,
+		#f6f7f8 40%,
+		#f6f7f8 100%
+	);
+	background-repeat: no-repeat;
+	background-size: 1400px auto;
+	display: flex;
+	position: relative;
+	animation: ${placeHolderShimmer} 1s linear infinite forwards;
+`
+
 const Header = () => {
 	const [activeMenu, setActiveMenu] = useState(false)
+	const { data, isError, isFetching, isSuccess } = useSelector(
+		state => state.categories
+	)
+	const dispatch = useDispatch()
+	const router = useRouter()
+
+	useEffect(() => {
+		dispatch(fetchCategories())
+	}, [])
 
 	return (
 		<React.Fragment>
@@ -69,18 +113,24 @@ const Header = () => {
 							/>
 						</MenuTopSpace>
 						<MenuCentreSpace>
-							<MenuItem
-								onClick={() => setActiveMenu(!activeMenu)}
-							/>
-							<MenuItem
-								onClick={() => setActiveMenu(!activeMenu)}
-							/>
-							<MenuItem
-								onClick={() => setActiveMenu(!activeMenu)}
-							/>
-							<MenuItem
-								onClick={() => setActiveMenu(!activeMenu)}
-							/>
+							{isError && { genericErrorMsg }}
+							{data &&
+								!data.length &&
+								isSuccess && { genericNoData }}
+							{(isFetching || !isSuccess) && (
+								<React.Fragment>
+									<LoadingCardTemplate />
+									<LoadingCardTemplate />
+									<LoadingCardTemplate />
+									<LoadingCardTemplate />
+								</React.Fragment>
+							)}
+							{data.length &&
+								data.map(category => (
+									<Link href={`/?category=${category.name}`}>
+										<MenuItem>{category.name}</MenuItem>
+									</Link>
+								))}
 						</MenuCentreSpace>
 						<MenuBottomSpace>
 							<MenuItem

@@ -7,6 +7,7 @@ const env = {
 	TIER: process.env.TIER,
 	VERSION: process.env.npm_package_version,
 	PROTOCOL: process.env.PROTOCOL,
+	PORT: process.env.PORT,
 }
 
 class MyDocument extends Document {

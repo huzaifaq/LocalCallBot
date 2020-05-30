@@ -6,12 +6,10 @@ import {
 	failedCategories,
 } from './Actions'
 
-export const fetchCategories = buttonIdentifier => async dispatch => {
+export const fetchCategories = () => async dispatch => {
 	try {
 		dispatch(requestCategories())
-		const res = await fetch(
-			`${getBaseUrl()}api/Categories?${buttonIdentifier}`
-		)
+		const res = await fetch(`${getBaseUrl()}api/Categories`)
 		if (res.status === 200) {
 			const data = await res.json()
 			dispatch(receiveCategories(data))
@@ -20,7 +18,6 @@ export const fetchCategories = buttonIdentifier => async dispatch => {
 		throw res
 	} catch (error) {
 		console.log('Error: Failed to fetch Categories')
-		console.error(error)
 		dispatch(failedCategories())
 	}
 }

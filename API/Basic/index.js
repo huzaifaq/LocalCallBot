@@ -7,7 +7,7 @@ const getBaseUrl = () => {
 			return 'https://soundlocalbot.in/'
 		case 'dev':
 		default:
-			return `${protocol}localhost:3000/`
+			return `${protocol}localhost:${env.PORT}/`
 	}
 }
 
