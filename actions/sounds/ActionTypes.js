@@ -1,3 +1,3 @@
-export const REQUEST_SOUNDS = 'request status'
-export const RECEIVE_SOUNDS = 'received status'
-export const FAILED_SOUNDS = 'failed status'
+export const REQUEST_SOUNDS = 'request sounds'
+export const RECEIVE_SOUNDS = 'received sounds'
+export const FAILED_SOUNDS = 'failed sounds'
