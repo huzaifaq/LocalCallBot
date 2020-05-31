@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Head from 'next/head'
 import { websiteTitle } from '../helpers/constants'
 
-import Header from './Header'
+import Header from './Header/Header'
 
 const PageWrapper = styled.div`
 	display: flex;

@@ -7,7 +7,7 @@ const fs = require('fs')
 const path = require('path')
 
 const port = parseInt(process.env.PORT, 10) || 3333
-process.env.PORT = 3333 // required for getBaseUrl
+process.env.PORT = port // required for getBaseUrl
 const protocol = process.env.PROTOCOL || 'HTTP'
 const tier = process.env.TIER || 'dev'
 const env = process.env.NODE_ENV
