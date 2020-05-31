@@ -9,43 +9,50 @@ import { genericNoData, genericErrorMsg } from '../helpers/constants'
 import { readIdentifierFromURL } from '../helpers/utils'
 
 const PageWrapper = styled.div`
-	background-color: ${props => props.theme.lightGray};
+	background-color: ${props => props.theme.background};
 	justify-items: center;
 	align-items: center;
-	display: flex;
+	display: block;
 `
 const ItemListWrapper = styled.div`
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 10px;
-	grid-auto-rows: minmax(100px, auto);
+	grid-template-columns: repeat(auto-fill, 160px);
+	row-gap: 25px;
+	column-gap: 20px;
+	justify-content: center;
 `
 
 const ItemCardWrapper = styled.div`
 	display: flex;
-	justify-content: center;
-	margin-bottom: 40px;
-	height: 260px;
-	width: 260px;
-	border: 1px solid red;
-	margin: 10px;
-	margin-bottom: 40px;
+	text-align: center;
+	align-items: center:
+	height: 200px;
+	width: 160px;
+	background-color: ${props => props.theme.backgroundLight};
+	flex-direction: column;
 `
 
-const ImageCardWrapper = styled.div`
+const ItemCardHeader = styled.h2`
+	color: red;
+	margin: 0;
+`
+
+const ItemCardImage = styled.div`
 	background-image: url('${p => p.imageSrc}');
 	background-position: center;
   	background-repeat: no-repeat;
 	background-size: cover;
-	width: 100%;
-	height: 100%;
+	width: 140px;
+	height: 140px;
 	display: flex;
-	justify-content: center;
-	position: relative;
-	border: 1px solid red;
-	h2 {
-		color: Red;
-		z-index: 1;
+	border-radius: 80px;
+	transition: 0.25s ease-in;
+	margin: 10px auto 0 auto;
+	&:hover {
+		@media ${props => props.theme.laptop} {
+			border-radius: 0px;
+			width: 160px;
+		}
 	}
 `
 
@@ -99,24 +106,21 @@ const Index = () => {
 	let view = null
 	if (isError) {
 		view = <ErrorContainer>{genericErrorMsg}</ErrorContainer>
-	}
-
-	if (isFetching || !isSuccess) {
-		view = <LoadingCardTemplate />
-	}
-
-	if (data && !data.length && isSuccess && !isFetching) {
+	} else if (isFetching || !isSuccess) {
+		view = (
+			<ItemListWrapper>
+				<LoadingCardTemplate />
+			</ItemListWrapper>
+		)
+	} else if (data && !data.length && isSuccess && !isFetching) {
 		view = <ErrorContainer>{genericNoData}</ErrorContainer>
-	}
-
-	if (data.length && !isFetching) {
+	} else if (data.length && !isFetching) {
 		view = (
 			<ItemListWrapper>
 				{data.map(sounds => (
 					<ItemCardWrapper key={sounds.name}>
-						<ImageCardWrapper imageSrc={sounds.image}>
-							<h2>{sounds.name}</h2>
-						</ImageCardWrapper>
+						<ItemCardImage imageSrc={sounds.image} />
+						<ItemCardHeader>{sounds.name}</ItemCardHeader>
 					</ItemCardWrapper>
 				))}
 			</ItemListWrapper>

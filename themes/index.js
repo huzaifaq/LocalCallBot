@@ -5,6 +5,10 @@ const theme = {
 	textBlack: '#272727',
 	activeText: '#BC9358',
 	utility: '#B2B2B2',
+	background: '#1f4287',
+	backgroundDark: '#071e3d',
+	backgroundLight: '#278ea5',
+	backgroundIcon: '#21e6c1',
 }
 
 const dimensions = {

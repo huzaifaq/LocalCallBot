@@ -8,13 +8,13 @@ const PageWrapper = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	flex-direction: row;
-	background-color: ${props => props.theme.lightGray};
+	background-color: ${props => props.theme.background};
 	height: auto;
 	justify-content
 `
 
 const WithLayoutWrapper = styled.div`
-	background-color: ${props => props.theme.lightGray};
+	background-color: ${props => props.theme.background};
 	width: 100%;
 	height: 100%;
 	padding: 16px;
