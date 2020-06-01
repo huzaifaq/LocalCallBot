@@ -1,7 +1,13 @@
 const { getChannel } = require('./discordUtilities')
+const {
+	genericSuccessMsg,
+	genericErrorMsg,
+	genericPlayTimeout,
+} = require('../../helpers/nodeConstants')
 
 global.discordDispatcher = null
 let connectedChannel = null
+let leaveTimer = null
 
 const playSoundInChannel = async (channelId, soundFileUrl) => {
 	try {
@@ -13,17 +19,20 @@ const playSoundInChannel = async (channelId, soundFileUrl) => {
 		) {
 			const voiceConnection = await connectedChannel.join()
 			if (voiceConnection) {
+				clearTimeout(leaveTimer)
 				global.discordDispatcher = voiceConnection.play(soundFileUrl)
 				global.discordDispatcher.on('finish', () => {
 					global.discordDispatcher.destroy()
-					connectedChannel.leave()
-					connectedChannel = null
+					leaveTimer = setTimeout(() => {
+						connectedChannel.leave()
+						connectedChannel = null
+					}, genericPlayTimeout)
 				})
-			} else {
-				throw new Error(
-					'Error: Playing sound file in channel, no voice connection found'
-				)
+				return { message: genericSuccessMsg }
 			}
+			throw new Error(
+				'Error: Playing sound file in channel, no voice connection found'
+			)
 		} else {
 			throw new Error(
 				'Error: Playing sound file in channel,  no channel found'
@@ -31,6 +40,7 @@ const playSoundInChannel = async (channelId, soundFileUrl) => {
 		}
 	} catch (e) {
 		console.log('Error: Playing sound file in channel')
+		return { message: genericErrorMsg }
 	}
 }
 
@@ -52,7 +62,6 @@ const stopSound = async () => {
 			connectedChannel = null
 		}
 	} catch (e) {
-		console.log(e)
 		console.log('Error: Stopping sound file in channel')
 	}
 }
@@ -63,7 +72,6 @@ const resumeSound = async () => {
 			global.discordDispatcher.resume()
 		}
 	} catch (e) {
-		console.log(e)
 		console.log('Error: Resuming sound file in channel')
 	}
 }

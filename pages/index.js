@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import styled, { keyframes } from 'styled-components'
 
 import withLayout from '../components/Layout'
-import { fetchSounds } from '../actions/sounds/ActionCreator'
+import { fetchSounds, playSound } from '../actions/sounds/ActionCreator'
 import { genericNoData, genericErrorMsg } from '../helpers/constants'
 import { readIdentifierFromURL } from '../helpers/utils'
 
@@ -111,22 +111,25 @@ const Index = () => {
 		dispatch(fetchSounds(readIdentifierFromURL(router.query.category)))
 	}, [router.query.category])
 
+	const fireSound = assetLink => {
+		dispatch(playSound(assetLink))
+	}
+
 	let view = null
 	if (isError) {
 		view = <ErrorContainer>{genericErrorMsg}</ErrorContainer>
 	} else if (isFetching || !isSuccess) {
-		view = (
-			<ItemListWrapper>
-				<LoadingCardTemplate />
-			</ItemListWrapper>
-		)
+		view = <LoadingCardTemplate />
 	} else if (data && !data.length && isSuccess && !isFetching) {
 		view = <ErrorContainer>{genericNoData}</ErrorContainer>
 	} else if (data.length && !isFetching) {
 		view = (
 			<ItemListWrapper>
 				{data.map(sounds => (
-					<ItemCardWrapper key={sounds.name}>
+					<ItemCardWrapper
+						key={sounds.name}
+						onClick={() => fireSound(sounds.assetLink)}
+					>
 						<ItemCardImageWrapper>
 							<ItemCardImage imageSrc={sounds.image} />
 						</ItemCardImageWrapper>
