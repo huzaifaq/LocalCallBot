@@ -10,7 +10,6 @@ const PageWrapper = styled.div`
 	flex-direction: row;
 	background-color: ${props => props.theme.background};
 	height: auto;
-	justify-content
 `
 
 const WithLayoutWrapper = styled.div`

@@ -1,4 +1,11 @@
-import { REQUEST_SOUNDS, RECEIVE_SOUNDS, FAILED_SOUNDS } from './ActionTypes'
+import {
+	REQUEST_SOUNDS,
+	RECEIVE_SOUNDS,
+	FAILED_SOUNDS,
+	REQUEST_SOUNDS_PLAY,
+	RECEIVE_SOUNDS_PLAY,
+	FAILED_SOUNDS_PLAY,
+} from './ActionTypes'
 
 export const requestSounds = () => ({
 	type: REQUEST_SOUNDS,
@@ -19,6 +26,32 @@ export const receiveSounds = data => ({
 })
 export const failedSounds = () => ({
 	type: FAILED_SOUNDS,
+	payload: {
+		isError: true,
+		isFetching: false,
+		isSuccess: false,
+	},
+})
+
+export const requestSoundPlay = () => ({
+	type: REQUEST_SOUNDS_PLAY,
+	payload: {
+		isError: false,
+		isFetching: true,
+		isSuccess: false,
+	},
+})
+
+export const receiveSoundPlay = data => ({
+	type: RECEIVE_SOUNDS_PLAY,
+	payload: {
+		isFetching: false,
+		data,
+		isSuccess: true,
+	},
+})
+export const failedSoundPlay = () => ({
+	type: FAILED_SOUNDS_PLAY,
 	payload: {
 		isError: true,
 		isFetching: false,

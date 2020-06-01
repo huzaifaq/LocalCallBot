@@ -5,6 +5,10 @@ const {
 	getChannel,
 	getAllChannels,
 } = require('../../backend/discord/discordUtilities')
+const { genericErrorMsg } = require('../../helpers/nodeConstants')
+const {
+	playSoundInChannel,
+} = require('../../backend/discord/discordDispatcher')
 
 const dbMapObject = {
 	categories: {
@@ -44,8 +48,11 @@ module.exports = {
 				case 'getAllChannels':
 					data = await getAllChannels()
 					break
+				case 'playSound':
+					data = await playSoundInChannel(null, ctx.query.assetLink)
+					break
 				default:
-					throw new Error('No Command Found')
+					throw new Error({ message: genericErrorMsg })
 			}
 			ctx.status = 200
 			ctx.body = data

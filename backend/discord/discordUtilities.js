@@ -1,6 +1,9 @@
+const { channelId: defaultChannelId } = require('./discordConfig')
+
 const getChannel = async channelId => {
+	const tempChannelId = channelId || defaultChannelId
 	try {
-		return await global.discordClient.channels.fetch(channelId)
+		return await global.discordClient.channels.fetch(tempChannelId)
 	} catch (e) {
 		console.log('Error: Trying to get channel')
 		return null

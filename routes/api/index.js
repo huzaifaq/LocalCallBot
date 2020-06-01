@@ -33,6 +33,8 @@ router.get('/getAllChannels', async ctx =>
 	performDiscordAction(ctx, 'getAllChannels')
 )
 
+router.get('/playSound', async ctx => performDiscordAction(ctx, 'playSound'))
+
 /**
  * todo
  */
