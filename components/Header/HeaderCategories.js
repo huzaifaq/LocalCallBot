@@ -4,7 +4,8 @@ import Link from 'next/link'
 import PropTypes from 'prop-types'
 
 import { genericNoData, genericErrorMsg } from '../../helpers/constants'
-import { LoadingCardTemplate, MenuItem } from './Style'
+import { LoadingCardTemplate } from './Style'
+import MenuItem from './MenuItem'
 
 const HeaderCategories = ({ isError, data, isFetching, isSuccess, query }) => {
 	if (isError) {
@@ -29,10 +30,12 @@ const HeaderCategories = ({ isError, data, isFetching, isSuccess, query }) => {
 	if (data.length && !isFetching) {
 		return data.map(category => (
 			<Link key={category.name} href={`/?category=${category.name}`}>
-				<MenuItem
-					imageSrc={category.image}
-					active={query === category.name}
-				/>
+				<div className="todo_remove">
+					<MenuItem
+						imageSrc={category.image}
+						active={query === category.name}
+					/>
+				</div>
 			</Link>
 		))
 	}
@@ -51,7 +54,12 @@ HeaderCategories.propTypes = {
 	isError: PropTypes.bool,
 	isSuccess: PropTypes.bool,
 	isFetching: PropTypes.bool,
-	data: PropTypes.shape({}),
+	data: PropTypes.arrayOf(
+		PropTypes.shape({
+			name: PropTypes.string,
+			image: PropTypes.string,
+		})
+	),
 }
 
 export default HeaderCategories
