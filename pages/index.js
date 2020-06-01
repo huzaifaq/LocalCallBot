@@ -16,7 +16,8 @@ const PageWrapper = styled.div`
 `
 const ItemListWrapper = styled.div`
 	display: grid;
-	grid-template-columns: repeat(auto-fill, 160px);
+	grid-template-columns: repeat(auto-fill, 120px);
+	grid-auto-rows: 1fr;
 	row-gap: 25px;
 	column-gap: 20px;
 	justify-content: center;
@@ -25,16 +26,17 @@ const ItemListWrapper = styled.div`
 const ItemCardWrapper = styled.div`
 	display: flex;
 	text-align: center;
-	align-items: center:
-	height: 200px;
-	width: 160px;
+	align-items: center;
+	min-height: 180px;
+	width: 120px;
 	background-color: ${props => props.theme.backgroundLight};
 	flex-direction: column;
 `
 
 const ItemCardHeader = styled.h2`
-	color: red;
+	color: white;
 	margin: 0;
+	font-size: 13px;
 `
 
 const ItemCardImage = styled.div`
@@ -42,18 +44,24 @@ const ItemCardImage = styled.div`
 	background-position: center;
   	background-repeat: no-repeat;
 	background-size: cover;
-	width: 140px;
-	height: 140px;
-	display: flex;
-	border-radius: 80px;
+	clip-path: circle(52px at 50% 50%);
+	width: 120px;
+	height: 120px;
 	transition: 0.25s ease-in;
-	margin: 10px auto 0 auto;
+	margin: 0;
+	overflow: hidden;
 	&:hover {
-		@media ${props => props.theme.laptop} {
-			border-radius: 0px;
-			width: 160px;
-		}
+		clip-path: circle(100% at 50% 50%);
+		transform: scale(1.1);
 	}
+`
+
+const ItemCardImageWrapper = styled.div`
+	width: 120px;
+	height: 120px;
+	display: flex;
+	margin: 0;
+	overflow: hidden;
 `
 
 const ErrorContainer = styled.div`
@@ -119,7 +127,9 @@ const Index = () => {
 			<ItemListWrapper>
 				{data.map(sounds => (
 					<ItemCardWrapper key={sounds.name}>
-						<ItemCardImage imageSrc={sounds.image} />
+						<ItemCardImageWrapper>
+							<ItemCardImage imageSrc={sounds.image} />
+						</ItemCardImageWrapper>
 						<ItemCardHeader>{sounds.name}</ItemCardHeader>
 					</ItemCardWrapper>
 				))}

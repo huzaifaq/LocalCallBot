@@ -28,35 +28,55 @@ export const LoadingCardTemplate = styled.div`
 	position: relative;
 	animation: ${placeHolderShimmer} 1s linear infinite forwards;
 `
-export const MenuItem = styled.div`
+
+export const MenuItemHoverPill = styled.span`
+	position: absolute;
+	background-color: white;
+	margin-top: ${props => (props.active ? '-20px' : 'unset')};
+	top: 50%;
+	left: -8px;
+	width: 3px;
+	height: ${props => (props.active ? '40px' : '0')};
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	transition: 0.1s ease-in;
+`
+export const MenuItemImage = styled.div`
 	display: flex;
     background-image: url('${p => p.imageSrc}');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: ${props => props.theme.backgroundIcon};
-    border-radius: 26px;
-	width: 40px;
-	height: 40px;
+	width: 48px;
+	height: 48px;
 	margin: 10px 0;
     cursor: pointer;
-    transition: 0.25s;
-	border: ${props => (props.active ? '1px solid red' : '')};
+    transition: 0.15s ease-in;
+	border-radius: ${props => (props.active ? '14px' : '24px')};
     &:hover {
-        @media ${props => props.theme.laptop} {
-            border-radius: 18px;
-        }
+            border-radius: 14px;
     }
 `
+export const MenuItemWrapper = styled.div`
+	display: flex;
+	position: relative;
+	&:hover {
+		${MenuItemHoverPill} {
+			height: ${props => (props.active ? '40px' : '20px')};
+			margin-top: ${props => (props.active ? '-20px' : '-10px')};
+		}
+	}
+`
+
 export const HeaderWrapper = styled.div`
 	display: flex;
-	width: 60px;
+	width: 72px;
 	height: calc(100vh - 16px);
 	top: 0;
-	background-color: ${props => props.theme.white};
+	padding: 8px 0;
+	background-color: ${props => props.theme.backgroundDark};
 	align-items: center;
-	padding: 8px;
-	box-shadow: 0 0px 8px 0px ${props => props.theme.utility};
 	justify-content: center;
 	z-index: ${props => props.theme.headerZ};
 	user-select: none;

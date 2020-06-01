@@ -7,12 +7,12 @@ import Sidebar from '../Sidebar'
 import Overlay from '../Overlay'
 import { fetchCategories } from '../../actions/categories/ActionCreator'
 import HeaderCategories from './HeaderCategories'
+import MenuItem from './MenuItem'
 import {
 	HeaderWrapper,
 	HeaderContainer,
 	MenuWrapper,
 	MenuSectionContainer,
-	MenuItem,
 } from './Style'
 
 const Header = () => {
@@ -34,11 +34,11 @@ const Header = () => {
 					<MenuWrapper>
 						<MenuSectionContainer>
 							<Link href="/" prefetch={false}>
-								<MenuItem />
+								<div className="todo_remove">
+									<MenuItem />
+								</div>
 							</Link>
-							<MenuItem
-								onClick={() => setActiveMenu(!activeMenu)}
-							/>
+							<MenuItem />
 						</MenuSectionContainer>
 						<MenuSectionContainer>
 							<HeaderCategories
@@ -50,9 +50,7 @@ const Header = () => {
 							/>
 						</MenuSectionContainer>
 						<MenuSectionContainer>
-							<MenuItem
-								onClick={() => setActiveMenu(!activeMenu)}
-							/>
+							<MenuItem />
 						</MenuSectionContainer>
 					</MenuWrapper>
 					<CSSTransition
