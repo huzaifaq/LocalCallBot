@@ -9,7 +9,7 @@ import {
 export const fetchCategories = () => async dispatch => {
 	try {
 		dispatch(requestCategories())
-		const res = await fetch(`${getBaseUrl()}api/Categories`)
+		const res = await fetch('https://cms.huzaifa.info/api/categories')
 		if (res.status === 200) {
 			const data = await res.json()
 			dispatch(receiveCategories(data))

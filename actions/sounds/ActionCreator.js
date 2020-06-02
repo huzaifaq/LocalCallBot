@@ -13,7 +13,7 @@ export const fetchSounds = (category = '') => async dispatch => {
 	try {
 		dispatch(requestSounds())
 		const res = await fetch(
-			`${getBaseUrl()}api/sounds${
+			`https://cms.huzaifa.info/api/sounds${
 				category ? `?category=${category}` : ''
 			}`
 		)

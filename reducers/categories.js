@@ -16,7 +16,7 @@ export const getNewState = (currentState, payload) => ({
 	...payload,
 })
 
-const products = (state = initialState, action) => {
+const categories = (state = initialState, action) => {
 	switch (action.type) {
 		case REQUEST_CATEGORIES:
 		case RECEIVE_CATEGORIES:
@@ -27,4 +27,4 @@ const products = (state = initialState, action) => {
 	}
 }
 
-export default products
+export default categories

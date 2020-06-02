@@ -128,10 +128,16 @@ const Index = () => {
 				{data.map(sounds => (
 					<ItemCardWrapper
 						key={sounds.name}
-						onClick={() => fireSound(sounds.assetLink)}
+						onClick={() =>
+							fireSound(
+								`https://cms.huzaifa.info${sounds.assetLink.url}`
+							)
+						}
 					>
 						<ItemCardImageWrapper>
-							<ItemCardImage imageSrc={sounds.image} />
+							<ItemCardImage
+								imageSrc={`https://cms.huzaifa.info${sounds.image.url}`}
+							/>
 						</ItemCardImageWrapper>
 						<ItemCardHeader>{sounds.name}</ItemCardHeader>
 					</ItemCardWrapper>
