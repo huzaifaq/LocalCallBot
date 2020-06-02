@@ -57,7 +57,7 @@ HeaderCategories.propTypes = {
 	data: PropTypes.arrayOf(
 		PropTypes.shape({
 			name: PropTypes.string,
-			image: PropTypes.string,
+			image: PropTypes.shape({}),
 		})
 	),
 }

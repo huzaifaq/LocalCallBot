@@ -8,18 +8,23 @@ const MenuItem = ({ imageSrc, active }) => {
 	return (
 		<MenuItemWrapper active={active}>
 			<MenuItemHoverPill active={active} />
-			<MenuItemImage imageSrc={imageSrc} active={active} />
+			<MenuItemImage
+				imageSrc={`https://cms.huzaifa.info${imageSrc.url}`}
+				active={active}
+			/>
 		</MenuItemWrapper>
 	)
 }
 
 MenuItem.defaultProps = {
-	imageSrc: '',
+	imageSrc: {},
 	active: false,
 }
 
 MenuItem.propTypes = {
-	imageSrc: PropTypes.string,
+	imageSrc: PropTypes.shape({
+		url: PropTypes.string,
+	}),
 	active: PropTypes.bool,
 }
 
