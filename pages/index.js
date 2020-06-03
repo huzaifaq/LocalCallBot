@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import styled, { keyframes } from 'styled-components'
+import io from 'socket.io-client'
 
 import withLayout from '../components/Layout'
 import { fetchSounds, playSound } from '../actions/sounds/ActionCreator'
@@ -112,7 +113,9 @@ const Index = () => {
 	}, [router.query.category])
 
 	const fireSound = assetLink => {
+		const socket = io()
 		dispatch(playSound(assetLink))
+		socket.emit('message', 'some one pressed the button')
 	}
 
 	let view = null
