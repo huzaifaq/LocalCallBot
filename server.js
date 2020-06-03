@@ -5,6 +5,7 @@ const cors = require('@koa/cors')
 const http2 = require('http2')
 const fs = require('fs')
 const path = require('path')
+const IO = require('koa-socket-2')
 
 const port = parseInt(process.env.PORT, 10) || 3333
 process.env.PORT = port // required for getBaseUrl
@@ -31,7 +32,8 @@ const applicationServerLog = () => {
 }
 
 app.prepare().then(() => {
-	const server = new Koa()
+	const koaServer = new Koa()
+	const io = new IO()
 	const router = new Router()
 
 	// Disable koa route handling as app will handle them
@@ -40,21 +42,35 @@ app.prepare().then(() => {
 		ctx.respond = false
 	})
 
-	server.use(
+	koaServer.use(
 		cors({
 			origin: '*',
 			allowMethods: ['GET', 'PUT', 'POST'],
 		})
 	)
 
-	server.use(async (ctx, next) => {
+	koaServer.use(async (ctx, next) => {
 		ctx.res.statusCode = 200
 		await next()
 	})
 
-	server.use(API.routes())
+	koaServer.use(API.routes())
 	/* Main router middleware - should be used after other routes */
-	server.use(router.routes())
+	koaServer.use(router.routes())
+
+	/* Attach websocket server to Koa server */
+	io.attach(koaServer)
+
+	io.on('connection', socket => {
+		console.log('a user connected')
+		socket.on('disconnect', () => {
+			console.log('user disconnected')
+		})
+	})
+
+	io.on('message', (ctx, data) => {
+		console.log('client sent data to message endpoint', data)
+	})
 
 	if (protocol === 'HTTP2') {
 		const cert = {
@@ -68,13 +84,15 @@ app.prepare().then(() => {
 
 		// Compression has to be turned off in next.config.js
 		// Do not forget to browse with https://localhost:3000
-		http2.createSecureServer(cert, server.callback()).listen(port, err => {
-			if (err) throw err
-			applicationServerLog()
-		})
+		http2
+			.createSecureServer(cert, koaServer.callback())
+			.listen(port, err => {
+				if (err) throw err
+				applicationServerLog()
+			})
 	} else {
 		// Compression can to be turned on in next.config.js
-		server.listen(port, err => {
+		koaServer.listen(port, err => {
 			if (err) throw err
 			applicationServerLog()
 		})
