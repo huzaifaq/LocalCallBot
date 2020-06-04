@@ -5,6 +5,7 @@ import {
 	REQUEST_SOUNDS_PLAY,
 	RECEIVE_SOUNDS_PLAY,
 	FAILED_SOUNDS_PLAY,
+	ACTIVE_SOUND_NAME,
 } from './ActionTypes'
 
 export const requestSounds = () => ({
@@ -56,5 +57,12 @@ export const failedSoundPlay = () => ({
 		isError: true,
 		isFetching: false,
 		isSuccess: false,
+	},
+})
+
+export const activeSoundPlaying = activeUrl => ({
+	type: ACTIVE_SOUND_NAME,
+	payload: {
+		activeUrl,
 	},
 })

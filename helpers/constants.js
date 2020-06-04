@@ -5,5 +5,7 @@ export const genericErrorMsg = 'Something went wrong. Please try again later.'
 export const genericNoData = 'No results found. Please comeback later.'
 
 export const sidebarTimeout = 5000
+export const activePlayingIdentifier = 'Playing'
+export const baseAssetURL = 'https://cms.huzaifa.info'
 
 export default null

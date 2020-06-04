@@ -9,16 +9,6 @@ const router = new Router({
 })
 
 /**
- * All sounds are fetched based on category
- */
-router.get('/sounds', async ctx => performDBCall(ctx, 'sounds'))
-
-/**
- * All categories are fetched
- */
-router.get('/categories', async ctx => performDBCall(ctx, 'categories'))
-
-/**
  * Discord Actions
  */
 router.get('/sendMessage', async ctx =>

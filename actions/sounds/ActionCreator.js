@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch'
-import getBaseUrl from '../../API/Basic'
+import { getBaseAPIUrl, getExternalAPIUrl } from '../../API/Basic'
 import {
 	requestSounds,
 	receiveSounds,
@@ -13,8 +13,8 @@ export const fetchSounds = (category = '') => async dispatch => {
 	try {
 		dispatch(requestSounds())
 		const res = await fetch(
-			`https://cms.huzaifa.info/api/sounds${
-				category ? `?category=${category}` : ''
+			`${getExternalAPIUrl()}/api/sounds${
+				category ? `?category.name=${category}` : ''
 			}`
 		)
 		if (res.status === 200) {
@@ -33,7 +33,7 @@ export const playSound = (assetLink = '') => async dispatch => {
 	try {
 		dispatch(requestSoundPlay())
 		const res = await fetch(
-			`${getBaseUrl()}api/playSound${
+			`${getBaseAPIUrl()}/api/playSound${
 				assetLink ? `?assetLink=${encodeURIComponent(assetLink)}` : ''
 			}`
 		)

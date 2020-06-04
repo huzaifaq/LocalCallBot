@@ -13,7 +13,10 @@ global.discordClient = new Discord.Client()
 global.discordClient.login(token)
 
 global.discordClient.once('ready', async () => {
-	console.log('Info: Connection established to discord')
+	console.log(
+		'\x1b[42m\x1b[37m%s\x1b[0m',
+		'Info: Connection established to discord'
+	)
 })
 
 global.discordClient.on('message', async message => {

@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch'
-import getBaseUrl from '../../API/Basic'
+import { getExternalAPIUrl } from '../../API/Basic'
 import {
 	requestCategories,
 	receiveCategories,
@@ -9,7 +9,7 @@ import {
 export const fetchCategories = () => async dispatch => {
 	try {
 		dispatch(requestCategories())
-		const res = await fetch('https://cms.huzaifa.info/api/categories')
+		const res = await fetch(`${getExternalAPIUrl()}/api/categories`)
 		if (res.status === 200) {
 			const data = await res.json()
 			dispatch(receiveCategories(data))
