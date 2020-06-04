@@ -1,14 +1,22 @@
 import env from '../../env'
 
-const getBaseUrl = () => {
+export const getBaseAPIUrl = () => {
 	const protocol = env.PROTOCOL === 'HTTP2' ? 'https://' : 'http://'
 	switch (env.TIER) {
 		case 'production':
-			return 'https://soundlocalbot.in/'
+			return 'https://bot.huzaifa.info'
 		case 'dev':
 		default:
-			return `${protocol}localhost:${env.PORT}/`
+			return `${protocol}localhost:${env.PORT}`
 	}
 }
 
-module.exports = getBaseUrl
+export const getExternalAPIUrl = () => {
+	switch (env.TIER) {
+		case 'production':
+			return 'https://cms.huzaifa.info'
+		case 'dev':
+		default:
+			return 'https://cms.huzaifa.info'
+	}
+}

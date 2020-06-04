@@ -17,7 +17,7 @@ const app = zeitNext({ dir: '.', dev })
 const handle = app.getRequestHandler()
 const API = require('./routes/api')
 
-require('./backend/mongoConnection')
+// require('./backend/mongoConnection')
 require('./backend/discord/discordConnection')
 
 const applicationServerLog = () => {
@@ -33,7 +33,7 @@ const applicationServerLog = () => {
 
 app.prepare().then(() => {
 	const koaServer = new Koa()
-	const io = new IO()
+	global.io = new IO()
 	const router = new Router()
 
 	// Disable koa route handling as app will handle them
@@ -59,18 +59,7 @@ app.prepare().then(() => {
 	koaServer.use(router.routes())
 
 	/* Attach websocket server to Koa server */
-	io.attach(koaServer)
-
-	io.on('connection', socket => {
-		console.log('a user connected')
-		socket.on('disconnect', () => {
-			console.log('user disconnected')
-		})
-	})
-
-	io.on('message', (ctx, data) => {
-		console.log('client sent data to message endpoint', data)
-	})
+	global.io.attach(koaServer)
 
 	if (protocol === 'HTTP2') {
 		const cert = {

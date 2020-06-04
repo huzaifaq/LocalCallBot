@@ -20,11 +20,21 @@ const playSoundInChannel = async (channelId, soundFileUrl) => {
 			const voiceConnection = await connectedChannel.join()
 			if (voiceConnection) {
 				clearTimeout(leaveTimer)
+				global.io.broadcast('Sound', {
+					type: 'Playing',
+					url: soundFileUrl,
+				})
 				global.discordDispatcher = voiceConnection.play(soundFileUrl)
 				global.discordDispatcher.on('finish', () => {
+					global.io.broadcast('Sound', {
+						type: 'Playing',
+						url: '',
+					})
 					global.discordDispatcher.destroy()
 					leaveTimer = setTimeout(() => {
-						connectedChannel.leave()
+						if (connectedChannel) {
+							connectedChannel.leave()
+						}
 						connectedChannel = null
 					}, genericPlayTimeout)
 				})

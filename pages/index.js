@@ -6,7 +6,13 @@ import io from 'socket.io-client'
 
 import withLayout from '../components/Layout'
 import { fetchSounds, playSound } from '../actions/sounds/ActionCreator'
-import { genericNoData, genericErrorMsg } from '../helpers/constants'
+import { activeSoundPlaying } from '../actions/sounds/Actions'
+import {
+	genericNoData,
+	genericErrorMsg,
+	activePlayingIdentifier,
+	baseAssetURL,
+} from '../helpers/constants'
 import { readIdentifierFromURL } from '../helpers/utils'
 
 const PageWrapper = styled.div`
@@ -30,7 +36,8 @@ const ItemCardWrapper = styled.div`
 	align-items: center;
 	min-height: 180px;
 	width: 120px;
-	background-color: ${props => props.theme.backgroundLight};
+	background-color: ${props =>
+		!props.active ? props.theme.backgroundLight : 'red'};
 	flex-direction: column;
 `
 
@@ -102,20 +109,30 @@ const LoadingCardTemplate = styled.div`
 `
 
 const Index = () => {
-	const { data, isError, isFetching, isSuccess } = useSelector(
+	const { data, isError, isFetching, isSuccess, activeUrl } = useSelector(
 		state => state.sounds
 	)
 	const dispatch = useDispatch()
 	const router = useRouter()
+	let socket = null
+
+	const socketHandler = eventData => {
+		if (eventData.type === activePlayingIdentifier) {
+			dispatch(activeSoundPlaying(eventData.url))
+		}
+	}
+
+	useEffect(() => {
+		socket = io()
+		socket.on('Sound', socketHandler)
+	}, [])
 
 	useEffect(() => {
 		dispatch(fetchSounds(readIdentifierFromURL(router.query.category)))
 	}, [router.query.category])
 
-	const fireSound = assetLink => {
-		const socket = io()
+	const fireSound = assetLink => () => {
 		dispatch(playSound(assetLink))
-		socket.emit('message', 'some one pressed the button')
 	}
 
 	let view = null
@@ -131,15 +148,17 @@ const Index = () => {
 				{data.map(sounds => (
 					<ItemCardWrapper
 						key={sounds.name}
-						onClick={() =>
-							fireSound(
-								`https://cms.huzaifa.info${sounds.assetLink.url}`
-							)
+						active={
+							`${baseAssetURL}${sounds.assetLink.url}` ===
+							activeUrl
 						}
+						onClick={fireSound(
+							`${baseAssetURL}${sounds.assetLink.url}`
+						)}
 					>
 						<ItemCardImageWrapper>
 							<ItemCardImage
-								imageSrc={`https://cms.huzaifa.info${sounds.image.url}`}
+								imageSrc={`${baseAssetURL}${sounds.image.url}`}
 							/>
 						</ItemCardImageWrapper>
 						<ItemCardHeader>{sounds.name}</ItemCardHeader>
