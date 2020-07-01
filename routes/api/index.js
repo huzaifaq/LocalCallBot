@@ -2,6 +2,7 @@ const Router = require('koa-router')
 const {
 	performDBCall,
 	performDiscordAction,
+	performCallAction,
 } = require('../../controllers/basic')
 
 const router = new Router({
@@ -24,6 +25,8 @@ router.get('/getAllChannels', async ctx =>
 )
 
 router.get('/playSound', async ctx => performDiscordAction(ctx, 'playSound'))
+
+router.get('/placeCall', async ctx => performCallAction(ctx, 'placeCall'))
 
 /**
  * todo

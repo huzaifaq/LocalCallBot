@@ -28,7 +28,6 @@ export const LoadingCardTemplate = styled.div`
 	position: relative;
 	animation: ${placeHolderShimmer} 1s linear infinite forwards;
 `
-
 export const MenuItemHoverPill = styled.span`
 	position: absolute;
 	background-color: white;
@@ -68,10 +67,9 @@ export const MenuItemWrapper = styled.div`
 		}
 	}
 `
-
 export const HeaderWrapper = styled.div`
 	display: flex;
-	width: 72px;
+	min-width: 72px;
 	height: calc(100vh - 16px);
 	top: 0;
 	padding: 8px 0;

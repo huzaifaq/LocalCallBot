@@ -37,7 +37,6 @@
 		"koa-router": "^7.4.0",
 		"koa-socket-2": "^1.2.0",
 		"lazysizes": "^5.2.2",
-		"mongoose": "^5.9.20",
 		"naudiodon": "^2.2.1",
 		"next": "^9.4.4",
 		"next-redux-wrapper": "^4.0.1",

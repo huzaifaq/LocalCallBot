@@ -3,11 +3,14 @@ const theme = {
 	gray: '#CCCCCC',
 	lightGray: '#F2F2F2',
 	textBlack: '#272727',
-	activeText: '#BC9358',
+	textWhite: '#F4FAFF',
+	activeText: 'red',
 	utility: '#B2B2B2',
-	background: '#1f4287',
-	backgroundDark: '#071e3d',
-	backgroundLight: '#278ea5',
+	background: '#313149',
+	backgroundDark: '#212131',
+	backgroundDarker: '#181825',
+	backgroundLight: '#355257',
+	backgroundLighter: '#0E98B0',
 	backgroundIcon: '#21e6c1',
 }
 
@@ -17,9 +20,10 @@ const dimensions = {
 
 const zIndexes = {
 	headerZ: 100,
-	overlayZ: 99,
-	backgroundVideoZ: 97,
-	elementsAboveVideoZ: 98,
+	sidebarZ: 99,
+	overlayZ: 98,
+	elementsAboveVideoZ: 97,
+	backgroundVideoZ: 96,
 }
 
 const size = {

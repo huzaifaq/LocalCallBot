@@ -51,11 +51,11 @@ class MyDocument extends Document {
 					<meta property="og:type" content="webite" />
 					<meta
 						property="og:url"
-						content="https://craftedjewellers.in/"
+						content="https://bot.huzaifa.info/"
 					/>
 					<meta
 						property="og:image"
-						content="https://craftedjewellers.in/images/icons/bot-192.png"
+						content="https://bot.huzaifa.info/images/icons/bot-192.png"
 					/>
 					<meta
 						property="og:description"

@@ -1,77 +1,133 @@
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
-import styled from 'styled-components'
-import Link from 'next/link'
+import { useDispatch, useSelector } from 'react-redux'
+import styled, { keyframes } from 'styled-components'
 import PropTypes from 'prop-types'
-import { sidebarTimeout } from '../helpers/constants'
-import { convertToURLIdentifier, readIdentifierFromURL } from '../helpers/utils'
+import {
+	sidebarTimeout,
+	genericNoData,
+	genericErrorMsg,
+	Staticlinks,
+	activeCallIdentifier,
+} from '../helpers/constants'
+import {
+	fetchPhoneNumbers,
+	placeCall,
+} from '../actions/placeCall/ActionCreator'
 
 const SidebarWrapper = styled.div`
-	background-color: white;
+	background-color: ${props => props.theme.backgroundDark};
 	position: fixed;
 	width: 100%;
 	max-width: 250px;
-	right: 0;
-	top: 96px;
+	left: 72px;
+	top: 0px;
+	padding: 8px 0;
 	transition: all 0.2s ease-in;
-	box-shadow: 0px 0px 2px 0px ${props => props.theme.utility};
-	min-height: 300px;
+	height: 100%;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 40px 0px 0px 40px;
 	user-select: none;
-	z-index: ${props => props.theme.headerZ};
+	z-index: ${props => props.theme.sidebarZ};
 
-	&.fade-enter {
-		right: -250px;
-		opacity: 0;
+	&.transition-enter {
+		left: -322px;
 	}
 
-	&.fade-enter-active {
-		right: 0;
-		opacity: 1;
+	&.transition-enter-active {
+		left: 72px;
 	}
 
-	&.fade-exit {
-		right: 0;
-		opacity: 1;
+	&.transition-exit {
+		left: 72px;
 	}
 
-	&.fade-exit-active {
-		right: -250px;
-		opacity: 0;
+	&.transition-exit-active {
+		left: -322px;
 	}
 `
 
 const SidebarContainer = styled.div`
-	width: 80%;
+	width: 100%;
 `
-const SidebarItem = styled.div`
+
+const SidebarItemWrapper = styled.div`
 	transition: font-size 0.1s ease-out;
 	height: 60px;
-	border-top: 1px solid ${props => props.theme.utility};
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	cursor: pointer;
 	color: ${props =>
-		props.active ? props.theme.activeText : props.theme.textBlack};
+		props.active ? props.theme.activeText : props.theme.textWhite};
+	background-color: ${props => props.theme.backgroundLight};
 	font-size: ${props => (props.active ? '18px' : '16px')};
-
+	margin: 8px 8px;
 	&:hover {
-		font-size: 18px;
+		background-color: ${props => props.theme.backgroundLighter};
+		color: ${props => props.theme.activeText};
 	}
 	&:first-child {
-		border-top: 0px;
+		margin-top: 10px;
 	}
+`
+const SidebarItemText = styled.h2`
+	color: ${props =>
+		props.active ? props.theme.activeText : props.theme.textWhite};
+	font-size: ${props => (props.active ? '18px' : '16px')};
+`
+const SidebarItemImage = styled.div`
+	background-image: url('${p => p.imageSrc}');
+	background-position: center;
+  	background-repeat: no-repeat;
+	background-size: cover;
+	height: 48px;
+	width: 48px;
+	border-radius: 24px;
+	margin: 0 8px;
+	align-items: center;
+`
+const placeHolderShimmer = keyframes`
+	0% {
+		background-position: -468px 0;
+	}
+
+	100% {
+		background-position: 100vw 0;
+	}
+`
+
+const LoadingCardTemplate = styled.div`
+	width: 100%;
+	height: calc(100vh - 32px);
+	background: #f6f7f8;
+	background-image: linear-gradient(
+		to right,
+		#f6f7f8 0%,
+		#e7e7e7 20%,
+		#f6f7f8 40%,
+		#f6f7f8 100%
+	);
+	background-repeat: no-repeat;
+	background-size: 1400px auto;
+	display: inline-block;
+	position: relative;
+	animation: ${placeHolderShimmer} 1s linear infinite forwards;
+`
+
+const ErrorContainer = styled.div`
+	width: 100%;
+	height: 440px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
 `
 
 let closeSidebarTimeout = null
 
 const Sidebar = ({ closeSidebar }) => {
-	const menus = ['Sounds', 'Status', 'Settings']
-	const router = useRouter()
+	const { data, isError, isFetching, isSuccess } = useSelector(
+		state => state.numbers
+	)
+	const dispatch = useDispatch()
+
 	const handleClearTimeout = () => {
 		clearTimeout(closeSidebarTimeout)
 	}
@@ -89,24 +145,34 @@ const Sidebar = ({ closeSidebar }) => {
 		return () => handleClearTimeout()
 	}, [])
 
-	let currentView = null
+	useEffect(() => {
+		dispatch(fetchPhoneNumbers())
+	}, [])
 
-	currentView = menus.map(category => (
-		<Link
-			href="/products/[category]"
-			as={`/products/${convertToURLIdentifier(category)}`}
-			key={category}
-		>
-			<SidebarItem
-				active={
-					readIdentifierFromURL(router.query.category) === category
-				}
-				onClick={() => closeSidebar(false)}
+	let currentView = null
+	if (isError) {
+		currentView = <ErrorContainer>{genericErrorMsg}</ErrorContainer>
+	} else if (isFetching || !isSuccess) {
+		currentView = <LoadingCardTemplate />
+	} else if (data && !data.length && isSuccess && !isFetching) {
+		currentView = <ErrorContainer>{genericNoData}</ErrorContainer>
+	} else if (data.length && !isFetching) {
+		currentView = data.map(number => (
+			<SidebarItemWrapper
+				key={number.number}
+				active={false}
+				onClick={() => {
+					closeSidebar(false)
+					dispatch(placeCall(number.number))
+				}}
 			>
-				{category}
-			</SidebarItem>
-		</Link>
-	))
+				<SidebarItemImage
+					imageSrc={`${Staticlinks.CMS}${number.image.url}`}
+				/>
+				<SidebarItemText>{number.name}</SidebarItemText>
+			</SidebarItemWrapper>
+		))
+	}
 
 	return (
 		<SidebarWrapper

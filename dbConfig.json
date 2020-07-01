@@ -1,7 +1,0 @@
-{
-	"connectionUrl": "mongodb://localhost:27017/",
-	"dbName": "admin",
-	"soundsCollectionName": "Sounds",
-	"user": "",
-	"userPassword": ""
-}

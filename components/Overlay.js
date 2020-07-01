@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const OverlayWrapper = styled.div`
-	background-color: ${props => props.theme.utility};
+	background-color: ${props => props.theme.backgroundDarker};
 	position: fixed;
 	top: 0;
 	width: 100%;

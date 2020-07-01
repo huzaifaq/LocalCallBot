@@ -4,14 +4,11 @@ import PropTypes from 'prop-types'
 
 import { MenuItemImage, MenuItemHoverPill, MenuItemWrapper } from './Style'
 
-const MenuItem = ({ imageSrc, active }) => {
+const MenuItem = ({ imageSrc, active, handleOnClick }) => {
 	return (
-		<MenuItemWrapper active={active}>
+		<MenuItemWrapper onClick={handleOnClick} active={active}>
 			<MenuItemHoverPill active={active} />
-			<MenuItemImage
-				imageSrc={`https://cms.huzaifa.info${imageSrc.url}`}
-				active={active}
-			/>
+			<MenuItemImage imageSrc={imageSrc} active={active} />
 		</MenuItemWrapper>
 	)
 }
@@ -19,13 +16,13 @@ const MenuItem = ({ imageSrc, active }) => {
 MenuItem.defaultProps = {
 	imageSrc: {},
 	active: false,
+	handleOnClick: () => null,
 }
 
 MenuItem.propTypes = {
-	imageSrc: PropTypes.shape({
-		url: PropTypes.string,
-	}),
+	imageSrc: PropTypes.string,
 	active: PropTypes.bool,
+	handleOnClick: PropTypes.func,
 }
 
 export default MenuItem

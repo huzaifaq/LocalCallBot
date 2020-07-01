@@ -25,6 +25,20 @@ const onUARTMessage = dataUnformatted => {
 			case currentCommand:
 				uartResponse.command = data[0].trim()
 				break
+			case 'NO CARRIER':
+				if (currentCommand === 'ATA') {
+					uartResponse.error = `ERROR: ${data}`
+					uartResCallback(uartResponse)
+					currentCommand = null
+				} else if (currentCommand) {
+					if (currentCommand.substring(0, 3) === 'ATD') {
+						// If Dial Command
+						uartResponse.error = `ERROR: ${data}`
+						uartResCallback(uartResponse)
+						currentCommand = null
+					}
+				} // If no command running ignore
+				break
 			case 'OK':
 				uartResCallback(uartResponse)
 				currentCommand = null
@@ -61,6 +75,7 @@ const onUARTMessage = dataUnformatted => {
 				if (re.test(data)) {
 					uartResponse.error = `ERROR: ${data.split(':')[1].trim()}`
 					uartResCallback(uartResponse)
+					currentCommand = null
 				} else if (data !== 'undefined') {
 					uartResponse.data += `${dataUnformatted}\n`
 				}

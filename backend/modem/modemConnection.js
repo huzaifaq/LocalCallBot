@@ -1,11 +1,9 @@
 const UartConnection = require('./UART/uartConnection')
-const {
-	playSoundInChannel,
-	stopSound,
-} = require('../discord/discordDispatcher')
-const { channelId } = require('../discord/discordConfig')
-const { opusOutputStream } = require('../audio/audioStream')
 const { whiteListedNumbers } = require('./modemConfig')
+
+let startAudioCallback = () => null
+let stopAudioCallback = () => null
+let isModeminitialized = false
 
 const sendUARTCommand = command => {
 	try {
@@ -37,16 +35,14 @@ const modemIncommingCallback = async callerID => {
 			}
 			if (isWhitelisted) {
 				await sendUARTCommand('ATA') // Accept call
-				playSoundInChannel(
-					channelId,
-					'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' // Put stream here plzzz
-				)
+				startAudioCallback()
 			} else {
 				await sendUARTCommand('ATH') // Decline call
 			}
 		} else {
 			// If no callerID accept call
 			await sendUARTCommand('ATA')
+			startAudioCallback()
 		}
 	} catch (e) {
 		console.log(e)
@@ -56,13 +52,13 @@ const modemIncommingCallback = async callerID => {
 const modemEndCallback = async () => {
 	try {
 		console.log('Call ended')
-		stopSound()
+		stopAudioCallback()
 	} catch (e) {
 		console.log(e)
 	}
 }
 
-const modemInitialize = async () => {
+const initModem = async () => {
 	try {
 		let error = null
 		let res = null
@@ -115,8 +111,35 @@ const modemInitialize = async () => {
 		}
 
 		if (!error) {
+			res = await sendUARTCommand('AT+COLP?') // check if caller answer detection is enabled
+			if (
+				res.data
+					.split(':')[1]
+					.split(',')[0]
+					.trim() === '0'
+			) {
+				res = await sendUARTCommand('AT+COLP=1')
+				if (!res.error) {
+					// correct state no action required
+				} else {
+					error = `Unable to enable Call answer detection: ${res.error}`
+				}
+			} else if (
+				res.data
+					.split(':')[1]
+					.split(',')[0]
+					.trim() === '1'
+			) {
+				// correct state no action required
+			} else {
+				error = `Unable to enable Call answer detection: ${res.error}`
+			}
+		}
+
+		if (!error) {
 			UartConnection.setIncommingCallback(modemIncommingCallback) // Set incomming call callback
 			UartConnection.setCallEndCallback(modemEndCallback) // Set call ended Callback
+			isModeminitialized = true
 			return console.log('Modem initlized')
 		}
 		return console.log(`Unable to initlize Modem\n ${error}`)
@@ -125,4 +148,22 @@ const modemInitialize = async () => {
 	}
 }
 
-modemInitialize()
+const setStartAudioCallback = callback => {
+	startAudioCallback = callback
+}
+
+const setStopAudioCallback = callback => {
+	stopAudioCallback = callback
+}
+
+const getIsModeminitialized = () => {
+	return isModeminitialized
+}
+
+module.exports = {
+	initModem,
+	setStartAudioCallback,
+	setStopAudioCallback,
+	getIsModeminitialized,
+	sendUARTCommand,
+}

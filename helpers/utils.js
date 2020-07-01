@@ -51,4 +51,21 @@ export const readTier = () => {
 	/* eslint-enable no-underscore-dangle */
 }
 
+export const streamToString = async stream => {
+	const decoder = new TextDecoder('utf-8')
+	const reader = stream.getReader()
+	let res = ''
+
+	await reader.read().then(function processText({ done, value }) {
+		if (done) {
+			return
+		}
+		res += decoder.decode(value)
+		// Read some more, and call this function again
+		reader.read().then(processText)
+	})
+
+	return res
+}
+
 export default undefined
