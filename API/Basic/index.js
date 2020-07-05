@@ -7,7 +7,7 @@ export const getBaseAPIUrl = () => {
 			return 'https://bot.huzaifa.info'
 		case 'dev':
 		default:
-			return `${protocol}localhost:${env.PORT}`
+			return 'https://bot.huzaifa.info'
 	}
 }
 

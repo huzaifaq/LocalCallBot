@@ -7,7 +7,7 @@ const fs = require('fs')
 const path = require('path')
 const IO = require('koa-socket-2')
 
-const port = parseInt(process.env.PORT, 10) || 3333
+const port = parseInt(process.env.PORT, 10) || 3338
 process.env.PORT = port // required for getBaseUrl
 const protocol = process.env.PROTOCOL || 'HTTP'
 const tier = process.env.TIER || 'dev'
@@ -17,8 +17,7 @@ const app = zeitNext({ dir: '.', dev })
 const handle = app.getRequestHandler()
 const API = require('./routes/api')
 
-// require('./backend/mongoConnection')
-require('./backend/discord/discordConnection')
+require('./backend')
 
 const applicationServerLog = () => {
 	console.log(

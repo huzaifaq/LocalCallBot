@@ -3,7 +3,11 @@ import React from 'react'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
-import { genericNoData, genericErrorMsg } from '../../helpers/constants'
+import {
+	genericNoData,
+	genericErrorMsg,
+	Staticlinks,
+} from '../../helpers/constants'
 import { LoadingCardTemplate } from './Style'
 import MenuItem from './MenuItem'
 
@@ -32,7 +36,7 @@ const HeaderCategories = ({ isError, data, isFetching, isSuccess, query }) => {
 			<Link key={category.name} href={`/?category=${category.name}`}>
 				<div className="todo_remove">
 					<MenuItem
-						imageSrc={category.image}
+						imageSrc={Staticlinks.CMS + category.image.url}
 						active={query === category.name}
 					/>
 				</div>

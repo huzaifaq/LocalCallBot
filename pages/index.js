@@ -11,7 +11,8 @@ import {
 	genericNoData,
 	genericErrorMsg,
 	activePlayingIdentifier,
-	baseAssetURL,
+	activeCallIdentifier,
+	Staticlinks,
 } from '../helpers/constants'
 import { readIdentifierFromURL } from '../helpers/utils'
 
@@ -23,7 +24,7 @@ const PageWrapper = styled.div`
 `
 const ItemListWrapper = styled.div`
 	display: grid;
-	grid-template-columns: repeat(auto-fill, 120px);
+	grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 	grid-auto-rows: 1fr;
 	row-gap: 25px;
 	column-gap: 20px;
@@ -35,14 +36,15 @@ const ItemCardWrapper = styled.div`
 	text-align: center;
 	align-items: center;
 	min-height: 180px;
-	width: 120px;
+	width: 100%;
 	background-color: ${props =>
 		!props.active ? props.theme.backgroundLight : 'red'};
 	flex-direction: column;
 `
 
 const ItemCardHeader = styled.h2`
-	color: white;
+	color: ${props =>
+		props.active ? props.theme.activeText : props.theme.textWhite};
 	margin: 0;
 	font-size: 13px;
 `
@@ -53,7 +55,7 @@ const ItemCardImage = styled.div`
   	background-repeat: no-repeat;
 	background-size: cover;
 	clip-path: circle(52px at 50% 50%);
-	width: 120px;
+	width: 100%;
 	height: 120px;
 	transition: 0.25s ease-in;
 	margin: 0;
@@ -65,7 +67,7 @@ const ItemCardImage = styled.div`
 `
 
 const ItemCardImageWrapper = styled.div`
-	width: 120px;
+	width: 100%;
 	height: 120px;
 	display: flex;
 	margin: 0;
@@ -149,16 +151,16 @@ const Index = () => {
 					<ItemCardWrapper
 						key={sounds.name}
 						active={
-							`${baseAssetURL}${sounds.assetLink.url}` ===
+							`${Staticlinks.CMS}${sounds.assetLink.url}` ===
 							activeUrl
 						}
 						onClick={fireSound(
-							`${baseAssetURL}${sounds.assetLink.url}`
+							`${Staticlinks.CMS}${sounds.assetLink.url}`
 						)}
 					>
 						<ItemCardImageWrapper>
 							<ItemCardImage
-								imageSrc={`${baseAssetURL}${sounds.image.url}`}
+								imageSrc={`${Staticlinks.CMS}${sounds.image.url}`}
 							/>
 						</ItemCardImageWrapper>
 						<ItemCardHeader>{sounds.name}</ItemCardHeader>

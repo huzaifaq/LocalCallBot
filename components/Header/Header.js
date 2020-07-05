@@ -14,6 +14,7 @@ import {
 	MenuWrapper,
 	MenuSectionContainer,
 } from './Style'
+import { Staticlinks } from '../../helpers/constants'
 
 const Header = () => {
 	const [activeMenu, setActiveMenu] = useState(false)
@@ -35,10 +36,22 @@ const Header = () => {
 						<MenuSectionContainer>
 							<Link href="/" prefetch={false}>
 								<div className="todo_remove">
-									<MenuItem />
+									<MenuItem
+										imageSrc={
+											Staticlinks.CMS +
+											Staticlinks.allIcon
+										}
+										active={!router.query.category}
+									/>
 								</div>
 							</Link>
-							<MenuItem />
+							<MenuItem
+								handleOnClick={() => setActiveMenu(!activeMenu)}
+								imageSrc={
+									Staticlinks.CMS + Staticlinks.phoneIcon
+								}
+								active={activeMenu}
+							/>
 						</MenuSectionContainer>
 						<MenuSectionContainer>
 							<HeaderCategories
@@ -50,20 +63,25 @@ const Header = () => {
 							/>
 						</MenuSectionContainer>
 						<MenuSectionContainer>
-							<MenuItem />
+							<MenuItem
+								imageSrc={
+									Staticlinks.CMS + Staticlinks.settingsIcon
+								}
+								active={false}
+							/>
 						</MenuSectionContainer>
 					</MenuWrapper>
-					<CSSTransition
-						in={activeMenu}
-						classNames="fade"
-						timeout={300}
-						unmountOnExit
-						mountOnEnter
-					>
-						<Sidebar closeSidebar={setActiveMenu} />
-					</CSSTransition>
 				</HeaderContainer>
 			</HeaderWrapper>
+			<CSSTransition
+				in={activeMenu}
+				classNames="transition"
+				timeout={300}
+				unmountOnExit
+				mountOnEnter
+			>
+				<Sidebar closeSidebar={setActiveMenu} />
+			</CSSTransition>
 			<CSSTransition
 				in={activeMenu}
 				classNames="fade"
